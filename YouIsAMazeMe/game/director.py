@@ -20,17 +20,19 @@ class MainWindow(arcade.Window):
         """ Set up the game and initialize the variables. """
         super().__init__(width, height, title)
 
-        # Sprite lists
-        self.player_list = None
-        self.coin_list = None
+        # The sprites in this game window can be stored in a dictionary. That makes it easier to iterate through each rendered item.
+        self.sprites = {}
+        self.sprites["player"] = None
+        self.sprites["coins"] = None
 
         # Set up the player
         self.score = 0
         self.player = None
 
     def setup(self):
-        self.player_list = arcade.SpriteList()
-        self.coin_list = arcade.SpriteList()
+        # Automatically sets up a SpriteList for every key.
+        for key in self.sprites:
+            self.sprites[key] = arcade.SpriteList()
 
         # Set up the player
         self.score = 0
@@ -40,7 +42,7 @@ class MainWindow(arcade.Window):
         self.player.center_y = constants.SCREEN_HEIGHT // 2
         self.player.scale = 0.8
 
-        self.player_list.append(self.player)
+        self.sprites["player"].append(self.player)
 
         for i in range(constants.COIN_COUNT):
             coin = arcade.Sprite(":resources:images/items/gold_1.png",
@@ -48,22 +50,22 @@ class MainWindow(arcade.Window):
             coin.center_x = random.randrange(constants.SCREEN_WIDTH)
             coin.center_y = random.randrange(constants.SCREEN_HEIGHT)
 
-            self.coin_list.append(coin)
+            self.sprites["coins"].append(coin)
 
         # Set the background color
         arcade.set_background_color(arcade.color.AMAZON)
 
     def on_draw(self):
         """
-        Render the screen.
+        Render the screen. This function is called every frame.
         """
 
         # This command has to happen before we start drawing
         arcade.start_render()
 
-        # Draw all the sprites.
-        self.coin_list.draw()
-        self.player_list.draw()
+        # Iterates through every key in the sprite dict, and draws them.
+        for key in self.sprites:
+            self.sprites[key].draw()
 
         # Put the text on the screen.
         output = f"Score: {self.score}"
@@ -94,14 +96,15 @@ class MainWindow(arcade.Window):
     def on_update(self, delta_time):
         """ Movement and game logic """
 
-        # Move the player
-        self.player_list.update()
 
-        # Update the players animation
-        self.player_list.update_animation()
+        for key in self.sprites:
+            # Runs each sprite's update() method.
+            self.sprites[key].update()
+            # Runs each sprite's update_animation() method.
+            self.sprites[key].update_animation()
 
         # Generate a list of all sprites that collided with the player.
-        hit_list = arcade.check_for_collision_with_list(self.player, self.coin_list)
+        hit_list = arcade.check_for_collision_with_list(self.player, self.sprites["coins"])
 
         # Loop through each colliding sprite, remove it, and add to the score.
         for coin in hit_list:
