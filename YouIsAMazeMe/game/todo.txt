@@ -1,1 +1,3 @@
 This will contain all of the game's main files, like classes and main files, etc.
+
+TODO for future commits: create a moving entity superclass that has this movement built in, so all we have to do when coding new moving entities is call the superclass and not rewrite the same code.
