@@ -29,9 +29,6 @@ class MainWindow(arcade.Window):
         self.score = 0
         self.player = None
 
-        # Movement variables
-        self._is_moving = False
-        self._initial_pos = ()
 
     def setup(self):
         # Automatically sets up a SpriteList for every key.
