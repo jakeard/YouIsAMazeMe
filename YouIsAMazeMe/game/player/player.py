@@ -52,7 +52,6 @@ class PlayerCharacter(arcade.Sprite):
         self.is_moving = False
         self.direction = (0,0)
         self.current_pos = (self.center_x, self.center_y)
-        print(self.current_pos)
         self.target_pos = self.current_pos
 
     def update_animation(self, delta_time: float = 1/60):
