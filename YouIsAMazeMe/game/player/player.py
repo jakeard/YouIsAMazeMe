@@ -48,6 +48,13 @@ class PlayerCharacter(arcade.Sprite):
             texture = load_texture_pair(f"{main_path}_walk{i}.png")
             self.walk_textures.append(texture)
 
+        # Movement constants
+        self.is_moving = False
+        self.direction = (0,0)
+        self.current_pos = (self.center_x, self.center_y)
+        print(self.current_pos)
+        self.target_pos = self.current_pos
+
     def update_animation(self, delta_time: float = 1/60):
 
         # Figure out if we need to flip face left or right
@@ -68,3 +75,39 @@ class PlayerCharacter(arcade.Sprite):
         frame = self.cur_texture // constants.UPDATES_PER_FRAME
         direction = self.character_face_direction
         self.texture = self.walk_textures[frame][direction]
+
+    def set_move(self, direction: tuple = (0,0)):
+        self.direction = direction
+        self.is_moving = True
+        self.target_pos = ((self.center_x+(direction[0]*constants.TILE_SIZE)), (self.center_y+(direction[1]*constants.TILE_SIZE)))
+        print(f"Current pos: {self.current_pos}, target pos: {self.target_pos}")
+    
+    def move(self):
+        """Method that gets called during update, used to move."""
+        # Am I at my target location?
+        #print(f"Current pos: {self.current_pos}, target pos: {self.target_pos}")
+        if self.target_pos != (self.center_x, self.center_y):
+            self.change_x = self.direction[0]*constants.MOVEMENT_SPEED
+            self.change_y = self.direction[1]*constants.MOVEMENT_SPEED
+
+        else:
+            #print("Reached destination")
+            self.direction = (0,0)
+            self.change_x = 0
+            self.change_y = 0
+            self.is_moving = False
+            
+
+    def update(self):
+        """The player's update class. Is run every game tick."""
+        super().update()
+        # Make sure that the current position is up to date
+        self.current_pos = (self.center_x, self.center_y)
+
+        # Only run the move function if set_move has activated movement
+        if self.is_moving:
+            self.move()
+        
+
+
+

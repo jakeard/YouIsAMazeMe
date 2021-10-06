@@ -29,6 +29,10 @@ class MainWindow(arcade.Window):
         self.score = 0
         self.player = None
 
+        # Movement variables
+        self._is_moving = False
+        self._initial_pos = ()
+
     def setup(self):
         # Automatically sets up a SpriteList for every key.
         for key in self.sprites:
@@ -75,23 +79,28 @@ class MainWindow(arcade.Window):
         """
         Called whenever a key is pressed.
         """
-        if key == arcade.key.UP or key == arcade.key.W:
-            self.player.change_y = constants.MOVEMENT_SPEED
-        elif key == arcade.key.DOWN or key == arcade.key.S:
-            self.player.change_y = -constants.MOVEMENT_SPEED
-        elif key == arcade.key.LEFT or key == arcade.key.A:
-            self.player.change_x = -constants.MOVEMENT_SPEED
-        elif key == arcade.key.RIGHT or key == arcade.key.D:
-            self.player.change_x = constants.MOVEMENT_SPEED
+        # Only accept these inputs if the player is not mvoving
+        if not self.sprites["player"][0].is_moving:
+            if key == (arcade.key.UP or arcade.key.W):
+                    # I'm moving! I don't want to be able to move again.
+                direction = (0,1)
+            elif key == (arcade.key.DOWN or arcade.key.S):
+                direction = (0,-1)
+            elif key == (arcade.key.RIGHT or arcade.key.D):
+                direction = (1,0)
+            elif key == (arcade.key.LEFT or arcade.key.A):
+                direction = (-1,0)
+            else:
+                direction = (0,0)
+
+            self.sprites["player"][0].set_move(direction)
+        # All other key presses go after this statement
 
     def on_key_release(self, key, modifiers):
         """
         Called when the user releases a key.
         """
-        if key == arcade.key.UP or key == arcade.key.DOWN or key == arcade.key.W or key == arcade.key.S:
-            self.player.change_y = 0
-        elif key == arcade.key.LEFT or key == arcade.key.RIGHT or key == arcade.key.A or key == arcade.key.D:
-            self.player.change_x = 0
+        pass
 
     def on_update(self, delta_time):
         """ Movement and game logic """
