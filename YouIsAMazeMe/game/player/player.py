@@ -80,7 +80,7 @@ class PlayerCharacter(arcade.Sprite):
         self.direction = direction
         self.is_moving = True
         self.target_pos = ((self.center_x+(direction[0]*constants.TILE_SIZE)), (self.center_y+(direction[1]*constants.TILE_SIZE)))
-        print(f"Current pos: {self.current_pos}, target pos: {self.target_pos}")
+        #print(f"Current pos: {self.current_pos}, target pos: {self.target_pos}")
     
     def move(self):
         """Method that gets called during update, used to move."""
