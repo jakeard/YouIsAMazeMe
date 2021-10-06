@@ -81,14 +81,14 @@ class MainWindow(arcade.Window):
         """
         # Only accept these inputs if the player is not mvoving
         if not self.sprites["player"][0].is_moving:
-            if key == (arcade.key.UP or arcade.key.W):
+            if key == arcade.key.UP or key == arcade.key.W:
                     # I'm moving! I don't want to be able to move again.
                 direction = (0,1)
-            elif key == (arcade.key.DOWN or arcade.key.S):
+            elif key == arcade.key.DOWN or key == arcade.key.S:
                 direction = (0,-1)
-            elif key == (arcade.key.RIGHT or arcade.key.D):
+            elif key == arcade.key.RIGHT or key == arcade.key.D:
                 direction = (1,0)
-            elif key == (arcade.key.LEFT or arcade.key.A):
+            elif key == arcade.key.LEFT or key == arcade.key.A:
                 direction = (-1,0)
             else:
                 direction = (0,0)
