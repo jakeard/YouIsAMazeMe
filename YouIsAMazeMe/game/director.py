@@ -24,6 +24,7 @@ class MainWindow(arcade.Window):
         self.sprites = {}
         self.sprites["player"] = None
         # self.sprites["coins"] = None
+        self.sprites["wall_list"] = None
 
         # Set up the player
         self.score = 0
@@ -44,6 +45,12 @@ class MainWindow(arcade.Window):
         self.player.scale = 0.8
 
         self.sprites["player"].append(self.player)
+
+        wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", constants.SPRITE_SCALING)
+        wall.center_x = 350
+        wall.center_y = 350
+        self.sprites["wall_list"].append(wall)
+
 
         # for i in range(constants.COIN_COUNT):
         #     coin = arcade.Sprite(":resources:images/items/gold_1.png",
