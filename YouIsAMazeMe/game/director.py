@@ -10,7 +10,8 @@ python -m arcade.examples.sprite_move_animation
 """
 import random, arcade 
 import game.constants as constants
-from game.player.player import PlayerCharacter
+from game.player import PlayerCharacter
+from game.handle_collisions import HandleCollisions
 
 
 class MainWindow(arcade.Window):
@@ -34,7 +35,8 @@ class MainWindow(arcade.Window):
         # Automatically sets up a SpriteList for every key.
         for key in self.sprites:
             self.sprites[key] = arcade.SpriteList()
-
+        
+        self.handle_collisions = HandleCollisions()
         # Set up the player
         self.score = 0
         self.player = PlayerCharacter()
@@ -76,10 +78,9 @@ class MainWindow(arcade.Window):
         """
         Called whenever a key is pressed.
         """
-        # Only accept these inputs if the player is not mvoving
-        if not self.sprites["player"][0].is_moving:
+        # Only accept these inputs if the player is not moving
+        if not self.sprites["player"][0].is_moving:  # I'm moving! I don't want to be able to move again.
             if key == arcade.key.UP or key == arcade.key.W:
-                    # I'm moving! I don't want to be able to move again.
                 direction = (0,1)
             elif key == arcade.key.DOWN or key == arcade.key.S:
                 direction = (0,-1)
@@ -108,7 +109,15 @@ class MainWindow(arcade.Window):
             self.sprites[key].update()
             # Runs each sprite's update_animation() method.
             self.sprites[key].update_animation()
+        self._cue_action("update")
 
+    def _cue_action(self, tag):
+        """Executes the actions with the given tag.
+        
+        Args:
+            tag (string): The given tag.
+        """ 
+        self.handle_collisions.execute(self.sprites)
         # Generate a list of all sprites that collided with the player.
         # hit_list = arcade.check_for_collision_with_list(self.player, self.sprites["coins"])
 
