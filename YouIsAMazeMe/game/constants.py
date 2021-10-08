@@ -17,3 +17,8 @@ LEFT_FACING = 1
 
 # One tile is how many pixels?
 TILE_SIZE = 64
+
+
+# Asset Textures
+WALL_SPRITE = "game/assets/example.png"
+PLAYER_SPRITE = "game/assets/example.png"
