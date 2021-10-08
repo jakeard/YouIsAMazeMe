@@ -1,5 +1,5 @@
 import arcade
-from game.action import Action
+# from game.action import Action
 # from game.player.player import PlayerCharacter
 
 class HandleCollisions():
