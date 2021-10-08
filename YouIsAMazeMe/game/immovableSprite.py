@@ -5,4 +5,5 @@ class ImmovableSprite(arcade.Sprite):
         super().__init__(self)
         self.center_x = coordinates[0]
         self.center_y = coordinates[1]
-        
+    
+    
