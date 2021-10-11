@@ -1,4 +1,5 @@
 import arcade
+from game import constants
 # from game.action import Action
 # from game.player.player import PlayerCharacter
 
@@ -8,6 +9,8 @@ class HandleCollisions():
     Stereotype:
         Controller
     """
+    def __init__(self):
+        self.fixing = False
     
     def execute(self, sprites):
         """Executes the action using the given actors.
@@ -16,23 +19,26 @@ class HandleCollisions():
             sprites (dict): The game actors {key: tag, value: list}.
         """
         self.player = sprites['player'][0]
-        # self.walls = sprites['walls']
+        self.walls = sprites['wall_list']
         # self.boxes = sprites['boxes']
-        self.sprites = sprites
 
         self._handle_walls_collision()
         # self._handle_box_collision()
     
     def _handle_walls_collision(self):
-        # for wall in self.walls:
-            # if self.player.collides_with_sprite(wall):
-        
-        if self.player.center_y < 65:
-            self.player.center_y = 64
-            self.player.change_y = 0
-        elif self.player.center_y > 600:
-            self.player.center_y = 599
-            self.player.change_y = 0
+        player = self.player
+        for wall in self.walls:
+            if not self.fixing:
+                if player.collides_with_sprite(wall):
+                    self.fixing = True
+                    direction = (player.direction[0] * -1, player.direction[1] * -1)
+                    player.direction = (0,0)
+                    player.change_x = 0
+                    player.change_y = 0
+                    player.is_moving = False
+                    coords = (player.past_x, player.past_y)
+                    player.center_x 
+                    player.set_move(direction, coords)
 
     # def _handle_box_collision(self, player, boxes):
     #     for box in boxes:

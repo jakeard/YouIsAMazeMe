@@ -1,3 +1,5 @@
+import os
+
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 SCREEN_TITLE = "Move with a Sprite Animation Example"
@@ -19,7 +21,8 @@ LEFT_FACING = 1
 # One tile is how many pixels?
 TILE_SIZE = 64
 
+PATH = os.path.dirname(os.path.abspath(__file__))
 
 # Asset Textures
-WALL_SPRITE = "game/assets/example.png"
+WALL_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_pixelplatformer', 'Tiles', 'tile_0000.png')
 PLAYER_SPRITE = "game/assets/example.png"
