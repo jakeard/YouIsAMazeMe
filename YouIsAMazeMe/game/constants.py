@@ -6,7 +6,7 @@ SCREEN_TITLE = "Move with a Sprite Animation Example"
 
 # COIN_SCALE = 0.5
 # COIN_COUNT = 50
-CHARACTER_SCALING = 2.5
+CHARACTER_SCALING = 2.2
 SPRITE_SCALING = 1
 
 # How fast to move, and how fast to run the animation

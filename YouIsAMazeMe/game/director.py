@@ -13,6 +13,7 @@ import game.constants as constants
 from game.player.player import PlayerCharacter
 from game.handle_collisions import HandleCollisions
 from game.walls import Walls
+from game.boxes import Box
 
 
 class MainWindow(arcade.Window):
@@ -65,7 +66,10 @@ class MainWindow(arcade.Window):
             except ValueError:
                 pass
         
-        
+        # 592 236
+        box = Box(560, 202)
+        self.sprites["boxes"].append(box)
+
 
         # wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", constants.SPRITE_SCALING)
         # wall.center_x = 350

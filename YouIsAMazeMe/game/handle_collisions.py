@@ -20,10 +20,10 @@ class HandleCollisions():
         """
         self.player = sprites['player'][0]
         self.walls = sprites['wall_list']
-        # self.boxes = sprites['boxes']
+        self.boxes = sprites['boxes']
 
         self._handle_walls_collision()
-        # self._handle_box_collision()
+        self._handle_box_collision()
     
     def _handle_walls_collision(self):
         player = self.player
@@ -35,11 +35,18 @@ class HandleCollisions():
                     player.direction = direction
                     player.target_pos = player.initial_pos
 
-    # def _handle_box_collision(self, player, boxes):
-    #     for box in boxes:
-    #         if player.collides_with_sprite(box):
-    #             pass
-        
+    def _handle_box_collision(self):
+        player = self.player
+        for box in self.boxes:
+            if not self.fixing:
+                if player.collides_with_sprite(box):
+                    # Tell the box to move!
+                    box.set_move(player.direction)
+                    self.fixing = True
+                    direction = (player.direction[0] * -1, player.direction[1] * -1)
+                    player.direction = direction
+                    player.target_pos = player.initial_pos
+
         # if player.collides_with_sprite(box):
         #     # velocity of player
         #     box.center_x = int(constants.MAX_X / 2)
