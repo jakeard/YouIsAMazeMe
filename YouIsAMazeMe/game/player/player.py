@@ -1,6 +1,6 @@
 import arcade
 import game.constants as constants
-
+from game.movingSprite import MovingSprite 
 
 def load_texture_pair(filename):
     """
@@ -11,9 +11,9 @@ def load_texture_pair(filename):
         arcade.load_texture(filename, flipped_horizontally=True)
     ]
 
-class PlayerCharacter(arcade.Sprite):
+class PlayerCharacter(MovingSprite):
     def __init__(self):
-
+        
         # Set up parent class
         super().__init__()
 
@@ -27,7 +27,7 @@ class PlayerCharacter(arcade.Sprite):
         # Used for flipping between image sequences
         self.cur_texture = 0
 
-        self.scale = constants.CHARACTER_SCALING
+        # self.scale = constants.CHARACTER_SCALING
 
         # Adjust the collision box. Default includes too much empty space
         # side-to-side. Box is centered at sprite center, (0, 0)
@@ -41,13 +41,13 @@ class PlayerCharacter(arcade.Sprite):
         # Load textures for idle standing
         #self.idle_texture_pair = load_texture_pair(f"{main_path}_idle.png")
         # Player Select
-        x = 0
+        x = 6
 
         self.idle_texture_pair = load_texture_pair(f"{main_path}{x}.png")
 
         # Load textures for walking
         self.walk_textures = []
-        for i in range(8):
+        for i in range((0+x),(2+x)):
             texture = load_texture_pair(f"{main_path}{i}.png")
             self.walk_textures.append(texture)
 
@@ -78,13 +78,6 @@ class PlayerCharacter(arcade.Sprite):
         direction = self.character_face_direction
         self.texture = self.walk_textures[frame][direction]
 
-
-    def set_move(self, direction: tuple = (0,0)):
-        self.direction = direction
-        self.is_moving = True
-        self.target_pos = ((self.center_x+(direction[0]*constants.TILE_SIZE)), (self.center_y+(direction[1]*constants.TILE_SIZE)))
-        #print(f"Current pos: {self.current_pos}, target pos: {self.target_pos}")
-
     # def set_direction(self, direction):
     #     self.direction = (direction[0] * -1, direction[1] * -1)
     
@@ -98,29 +91,9 @@ class PlayerCharacter(arcade.Sprite):
     # def wall_collision(self):
     #     self.set_move_collision(self.past_x, self.past_y)
 
-    
-    def move(self):
-        """Method that gets called during update, used to move."""
-        # Am I at my target location?
-        #print(f"Current pos: {self.current_pos}, target pos: {self.target_pos}")
-        if self.target_pos != (self.center_x, self.center_y):
-            self.change_x = self.direction[0]*constants.MOVEMENT_SPEED
-            self.change_y = self.direction[1]*constants.MOVEMENT_SPEED
-
-        else:
-            #print("Reached destination")
-            self.direction = (0,0)
-            self.change_x = 0
-            self.change_y = 0
-            self.is_moving = False
-            
+     
 
     def update(self):
         """The player's update class. Is run every game tick."""
         super().update()
-        # Make sure that the current position is up to date
-        self.current_pos = (self.center_x, self.center_y)
 
-        # Only run the move function if set_move has activated movement
-        if self.is_moving:
-            self.move()

@@ -15,7 +15,7 @@ class MovingSprite(arcade.Sprite):
         self.target_pos = self.current_pos
 
 
-    def set_move(self, direction: tuple = (0,0), coords=None):
+    def set_move(self, direction, coords=None):
         self.direction = direction
         self.is_moving = True
         if coords is None: 

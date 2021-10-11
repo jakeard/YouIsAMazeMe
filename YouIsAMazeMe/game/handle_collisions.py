@@ -37,8 +37,9 @@ class HandleCollisions():
                     player.change_y = 0
                     player.is_moving = False
                     coords = (player.past_x, player.past_y)
+                    print(coords)
                     player.center_x 
-                    player.set_move(direction, coords)
+                    player.set_move(direction)
 
     # def _handle_box_collision(self, player, boxes):
     #     for box in boxes:

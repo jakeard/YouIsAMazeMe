@@ -6,17 +6,17 @@ SCREEN_TITLE = "Move with a Sprite Animation Example"
 
 # COIN_SCALE = 0.5
 # COIN_COUNT = 50
-CHARACTER_SCALING = 2
-SPRITE_SCALING = .5
+CHARACTER_SCALING = 1
+SPRITE_SCALING = 1
 
 # How fast to move, and how fast to run the animation
 # MOVEMENT SPEED MUST BE A POWER OF 2
 MOVEMENT_SPEED = 4
-UPDATES_PER_FRAME = 5
+UPDATES_PER_FRAME = 1
 
 # Constants used to track if the player is facing left or right
-RIGHT_FACING = 0
-LEFT_FACING = 1
+RIGHT_FACING = 1
+LEFT_FACING = 0
 
 # One tile is how many pixels?
 TILE_SIZE = 64
