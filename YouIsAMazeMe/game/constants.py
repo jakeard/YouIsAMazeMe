@@ -18,3 +18,8 @@ LEFT_FACING = 1
 
 # One tile is how many pixels?
 TILE_SIZE = 64
+
+# Asset Pathing
+PLAYER_SPRITE = "YouisAMazeMe/assets/kenney_assets/Characters/character_000" # Trim off the last digit and .png 
+WALL_SPRITE = ""
+MOVING_WALL_SPRITE = ""

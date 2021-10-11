@@ -10,7 +10,7 @@ python -m arcade.examples.sprite_move_animation
 """
 import random, arcade 
 import game.constants as constants
-from game.player import PlayerCharacter
+from game.player.player import PlayerCharacter
 from game.handle_collisions import HandleCollisions
 
 
