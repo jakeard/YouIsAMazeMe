@@ -10,8 +10,9 @@ python -m arcade.examples.sprite_move_animation
 """
 import random, arcade 
 import game.constants as constants
-from game.player import PlayerCharacter
+from game.player.player import PlayerCharacter
 from game.handle_collisions import HandleCollisions
+from game.walls import Walls
 
 
 class MainWindow(arcade.Window):
@@ -26,7 +27,6 @@ class MainWindow(arcade.Window):
         self.sprites["player"] = None
         # self.sprites["coins"] = None
         self.sprites["wall_list"] = None
-
         # Set up the player
         self.score = 0
         self.player = None
@@ -48,10 +48,27 @@ class MainWindow(arcade.Window):
 
         self.sprites["player"].append(self.player)
 
-        wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", constants.SPRITE_SCALING)
-        wall.center_x = 350
-        wall.center_y = 350
-        self.sprites["wall_list"].append(wall)
+        for i in range(1, constants.SCREEN_HEIGHT + 15, 17):
+            wall = Walls(8, i)
+            self.sprites["wall_list"].append(wall)
+            wall = Walls(constants.SCREEN_WIDTH - 8, i)
+            self.sprites["wall_list"].append(wall)
+        for i in range(1, constants.SCREEN_WIDTH, 17):
+            try:
+                wall = Walls(i, constants.SCREEN_HEIGHT - 8)
+                self.sprites["wall_list"].append(wall)
+            except ValueError:
+                pass
+            try:
+                wall = Walls(i, 8)
+                self.sprites["wall_list"].append(wall)
+            except ValueError:
+                pass
+
+        # wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", constants.SPRITE_SCALING)
+        # wall.center_x = 350
+        # wall.center_y = 350
+        # self.sprites["wall_list"].append(wall)
 
 
         # for i in range(constants.COIN_COUNT):
@@ -85,8 +102,10 @@ class MainWindow(arcade.Window):
         """
         Called whenever a key is pressed.
         """
+        player = self.sprites['player'][0] 
         # Only accept these inputs if the player is not moving
-        if not self.sprites["player"][0].is_moving:  # I'm moving! I don't want to be able to move again.
+        if not player.is_moving:  # I'm moving! I don't want to be able to move again.
+            player.set_past_coords(player.center_x, player.center_y)
             if key == arcade.key.UP or key == arcade.key.W:
                 direction = (0,1)
             elif key == arcade.key.DOWN or key == arcade.key.S:
@@ -97,8 +116,10 @@ class MainWindow(arcade.Window):
                 direction = (-1,0)
             else:
                 direction = (0,0)
+            player.set_past_direction(direction)
+            self.handle_collisions.fixing = False
 
-            self.sprites["player"][0].set_move(direction)
+            player.set_move(direction)
         # All other key presses go after this statement
 
     def on_key_release(self, key, modifiers):
@@ -125,6 +146,7 @@ class MainWindow(arcade.Window):
             tag (string): The given tag.
         """ 
         self.handle_collisions.execute(self.sprites)
+        
         # Generate a list of all sprites that collided with the player.
         # hit_list = arcade.check_for_collision_with_list(self.player, self.sprites["coins"])
 

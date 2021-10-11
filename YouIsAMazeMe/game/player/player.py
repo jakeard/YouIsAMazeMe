@@ -19,7 +19,12 @@ class PlayerCharacter(MovingSprite):
         super().__init__()
 
         # Default to face-right
+        self.past_x = None
+        self.past_y = None
+        self.past_direction = None
+        self.direction = (0, 0)
         self.character_face_direction = constants.RIGHT_FACING
+        self.moving_sprite = MovingSprite()
 
         # Used for flipping between image sequences
         self.cur_texture = 0
@@ -69,6 +74,19 @@ class PlayerCharacter(MovingSprite):
         frame = self.cur_texture // constants.UPDATES_PER_FRAME
         direction = self.character_face_direction
         self.texture = self.walk_textures[frame][direction]
+
+    # def set_direction(self, direction):
+    #     self.direction = (direction[0] * -1, direction[1] * -1)
+    
+    def set_past_coords(self, past_x, past_y):
+        self.past_x = past_x
+        self.past_y = past_y
+    
+    def set_past_direction(self, direction):
+        self.past_direction = direction
+
+    # def wall_collision(self):
+    #     self.set_move_collision(self.past_x, self.past_y)
     
     def update(self):
         """The player's update class. Is run every game tick."""
