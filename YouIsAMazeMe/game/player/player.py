@@ -27,7 +27,7 @@ class PlayerCharacter(MovingSprite):
         # Used for flipping between image sequences
         self.cur_texture = 0
 
-        # self.scale = constants.CHARACTER_SCALING
+        self.scale = constants.CHARACTER_SCALING
 
         # Adjust the collision box. Default includes too much empty space
         # side-to-side. Box is centered at sprite center, (0, 0)
@@ -51,11 +51,6 @@ class PlayerCharacter(MovingSprite):
             texture = load_texture_pair(f"{main_path}{i}.png")
             self.walk_textures.append(texture)
 
-        # Movement constants
-        self.is_moving = False
-        self.direction = (0,0)
-        self.current_pos = (self.center_x, self.center_y)
-        self.target_pos = self.current_pos
 
     def update_animation(self, delta_time: float = 1/60):
 
