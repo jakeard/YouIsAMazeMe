@@ -18,7 +18,12 @@ class PlayerCharacter(arcade.Sprite):
         super().__init__()
 
         # Default to face-right
+        self.past_x = None
+        self.past_y = None
+        self.past_direction = None
+        self.direction = (0, 0)
         self.character_face_direction = constants.RIGHT_FACING
+        self.moving_sprite = MovingSprite()
 
         # Used for flipping between image sequences
         self.cur_texture = 0
@@ -74,11 +79,26 @@ class PlayerCharacter(arcade.Sprite):
         direction = self.character_face_direction
         self.texture = self.walk_textures[frame][direction]
 
+<<<<<<< HEAD
     def set_move(self, direction: tuple = (0,0)):
         self.direction = direction
         self.is_moving = True
         self.target_pos = ((self.center_x+(direction[0]*constants.TILE_SIZE)), (self.center_y+(direction[1]*constants.TILE_SIZE)))
         #print(f"Current pos: {self.current_pos}, target pos: {self.target_pos}")
+=======
+    # def set_direction(self, direction):
+    #     self.direction = (direction[0] * -1, direction[1] * -1)
+    
+    def set_past_coords(self, past_x, past_y):
+        self.past_x = past_x
+        self.past_y = past_y
+    
+    def set_past_direction(self, direction):
+        self.past_direction = direction
+
+    # def wall_collision(self):
+    #     self.set_move_collision(self.past_x, self.past_y)
+>>>>>>> fd25a056bed7dd260c183869df4885809ca72d13
     
     def move(self):
         """Method that gets called during update, used to move."""
