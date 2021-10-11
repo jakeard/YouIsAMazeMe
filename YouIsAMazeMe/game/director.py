@@ -25,7 +25,7 @@ class MainWindow(arcade.Window):
         # The sprites in this game window can be stored in a dictionary. That makes it easier to iterate through each rendered item.
         self.sprites = {}
         self.sprites["player"] = None
-        # self.sprites["coins"] = None
+        self.sprites["boxes"] = None
         self.sprites["wall_list"] = None
         # Set up the player
         self.score = 0
@@ -64,6 +64,8 @@ class MainWindow(arcade.Window):
                 self.sprites["wall_list"].append(wall)
             except ValueError:
                 pass
+        
+        
 
         # wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", constants.SPRITE_SCALING)
         # wall.center_x = 350
