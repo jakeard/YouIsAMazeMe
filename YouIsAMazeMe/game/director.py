@@ -44,7 +44,7 @@ class MainWindow(arcade.Window):
 
         self.player.center_x = constants.SCREEN_WIDTH // 2
         self.player.center_y = constants.SCREEN_HEIGHT // 2
-        self.player.scale = 0.8
+        self.player.scale = constants.CHARACTER_SCALING
 
         self.sprites["player"].append(self.player)
 
