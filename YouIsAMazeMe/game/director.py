@@ -119,7 +119,7 @@ class MainWindow(arcade.Window):
         #     self.sprites["coins"].append(coin)
 
         # Set the background color
-        arcade.set_background_color(arcade.color.AMAZON)
+        arcade.set_background_color(arcade.color.KHAKI)
 
     def on_draw(self):
         """
@@ -134,8 +134,8 @@ class MainWindow(arcade.Window):
             self.sprites[key].draw()
 
         # Put the text on the screen.
-        output = f"Score: {self.score}"
-        arcade.draw_text(output, 10, 20, arcade.color.WHITE, 14)
+        # output = f"Score: {self.score}"
+        # arcade.draw_text(output, 10, 20, arcade.color.WHITE, 14)
 
     def on_key_press(self, key, modifiers):
         """
