@@ -25,8 +25,13 @@ PATH = os.path.dirname(os.path.abspath(__file__))
 
 # Asset Pathing
 PLAYER_SPRITE = os.path.join(PATH, '..', 'assets','kenney_assets', 'Characters', 'character_000') # Trim off the last digit and .png 
-WALL_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0000.png')
-MOVING_WALL_SPRITE = ""
+WALL_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0009.png')
+MOVING_WALL_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0026.png')
+FLAG_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0112.png')
+DOOR_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0150.png')
+KEY_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0027.png')
+LOCK_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0028.png')
+BACKGROUND_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Background', 'background_0002.png')
 
 
 
