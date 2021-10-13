@@ -12,4 +12,11 @@ class Box(MovingSprite):
         self.center_x = x
         self.center_y = y
 
-        
+        self.fixing = False
+
+    def update(self):
+        super().update()
+
+        if self.fixing:
+            if not self.is_moving:
+                self.fixing = False

@@ -24,6 +24,7 @@ class HandleCollisions():
 
         self._handle_walls_collision()
         self._handle_box_collision()
+        self._handle_box_environment_collision()
     
     def _handle_walls_collision(self):
         player = self.player
@@ -51,3 +52,17 @@ class HandleCollisions():
         #     # velocity of player
         #     box.center_x = int(constants.MAX_X / 2)
         #     box.center_y += int(constants.player_Y)
+
+    def _handle_box_environment_collision(self):
+        for box in self.boxes:
+            if not box.fixing:
+                hitlist = arcade.check_for_collision_with_lists(box, [self.walls, self.boxes])
+                if len(hitlist) != 0:
+                    box.fixing = True
+                    new_direction = (box.direction[0]*-1, box.direction[1]*-1)
+                    box.direction = new_direction
+                    box.target_pos = box.initial_pos
+                    for hit in hitlist:
+                        #print("hit")
+                        # What will this box do to whatever it collides with?
+                        pass
