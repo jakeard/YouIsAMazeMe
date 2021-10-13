@@ -91,13 +91,13 @@ class MainWindow(arcade.Window):
         #80, 492
         #144, 492
         #144, 556
-        for i in range(1, 144, 17):
+        for i in range(1, 100, 17):
             wall = Walls(i, 492)
             self.sprites["wall_list"].append(wall)
         
-        for i in range(492, constants.SCREEN_HEIGHT, 17):
-            wall = Walls(144, i)
-            self.sprites["wall_list"].append(wall)
+        # for i in range(492, constants.SCREEN_HEIGHT, 17):
+        #     wall = Walls(144, i)
+        #     self.sprites["wall_list"].append(wall)
         
         # 592 236
         box = Box(656, 300)
