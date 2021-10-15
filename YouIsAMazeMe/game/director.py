@@ -13,6 +13,7 @@ import game.constants as constants
 from game.player.player import PlayerCharacter
 from game.handle_collisions import HandleCollisions
 from game.walls import Walls
+from game.boxes import Box
 
 
 class MainWindow(arcade.Window):
@@ -44,7 +45,7 @@ class MainWindow(arcade.Window):
 
         self.player.center_x = constants.SCREEN_WIDTH // 2
         self.player.center_y = constants.SCREEN_HEIGHT // 2
-        self.player.scale = 0.8
+        self.player.scale = constants.CHARACTER_SCALING
 
         self.sprites["player"].append(self.player)
 
@@ -65,7 +66,43 @@ class MainWindow(arcade.Window):
             except ValueError:
                 pass
         
+        for i in range (1, constants.SCREEN_HEIGHT + 15, 17):
+            if i in range (196, 264):
+                pass
+            else:
+                wall = Walls(225, i)
+                self.sprites["wall_list"].append(wall)
         
+        for i in range (1, constants.SCREEN_HEIGHT + 15, 17):
+            if i in range (1, 144) or i in range (400, 625):
+                pass
+            else:
+                wall = Walls(625, i)
+                self.sprites["wall_list"].append(wall)
+
+        for i in range (1, constants.SCREEN_WIDTH + 15, 17):
+            if i in range (1, 225) or i in range(361, 484):
+                pass
+            else:
+                wall = Walls(i, 400)
+                self.sprites["wall_list"].append(wall)
+
+        #80, 556
+        #80, 492
+        #144, 492
+        #144, 556
+        for i in range(1, 100, 17):
+            wall = Walls(i, 492)
+            self.sprites["wall_list"].append(wall)
+        
+        # for i in range(492, constants.SCREEN_HEIGHT, 17):
+        #     wall = Walls(144, i)
+        #     self.sprites["wall_list"].append(wall)
+        
+        # 592 236
+        box = Box(656, 300)
+        self.sprites["boxes"].append(box)
+
 
         # wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", constants.SPRITE_SCALING)
         # wall.center_x = 350
@@ -82,7 +119,7 @@ class MainWindow(arcade.Window):
         #     self.sprites["coins"].append(coin)
 
         # Set the background color
-        arcade.set_background_color(arcade.color.AMAZON)
+        arcade.set_background_color(arcade.color.KHAKI)
 
     def on_draw(self):
         """
@@ -97,8 +134,8 @@ class MainWindow(arcade.Window):
             self.sprites[key].draw()
 
         # Put the text on the screen.
-        output = f"Score: {self.score}"
-        arcade.draw_text(output, 10, 20, arcade.color.WHITE, 14)
+        # output = f"Score: {self.score}"
+        # arcade.draw_text(output, 10, 20, arcade.color.WHITE, 14)
 
     def on_key_press(self, key, modifiers):
         """
