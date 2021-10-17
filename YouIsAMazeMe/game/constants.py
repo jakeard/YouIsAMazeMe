@@ -32,6 +32,7 @@ DOOR_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile
 KEY_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0027.png')
 LOCK_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0028.png')
 BACKGROUND_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Background', 'background_0002.png')
+START_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'start_screen.png')
 
 
 
