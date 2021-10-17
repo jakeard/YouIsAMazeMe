@@ -7,7 +7,6 @@ class Start_View(arcade.View):
         super().__init__()
     
     def on_show(self):
-        arcade.set_viewport(0, constants.SCREEN_WIDTH -1, 0, constants.SCREEN_HEIGHT -1)
         self.texture = arcade.load_texture(constants.START_SCREEN)
 
     def on_draw(self):
