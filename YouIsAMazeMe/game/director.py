@@ -14,6 +14,8 @@ from game.player.player import PlayerCharacter
 from game.handle_collisions import HandleCollisions
 from game.walls import Walls
 from game.boxes import Box
+from game.win import Win
+from game.lose import Lose
 
 
 class MainWindow(arcade.View):
@@ -31,6 +33,7 @@ class MainWindow(arcade.View):
         # Set up the player
         self.score = 0
         self.player = None
+        self.won = None
 
 
     def setup(self):
@@ -169,14 +172,18 @@ class MainWindow(arcade.View):
 
     def on_update(self, delta_time):
         """ Movement and game logic """
-
-
         for key in self.sprites:
             # Runs each sprite's update() method.
             self.sprites[key].update()
             # Runs each sprite's update_animation() method.
             self.sprites[key].update_animation()
         self._cue_action("update")
+        if not self.won is None:
+            if self.won:
+                view = Win()
+            elif not self.won:
+                view = Lose()
+            self.window.show_view(view)
 
     def _cue_action(self, tag):
         """Executes the actions with the given tag.
