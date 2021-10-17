@@ -16,12 +16,12 @@ from game.walls import Walls
 from game.boxes import Box
 
 
-class MainWindow(arcade.Window):
+class MainWindow(arcade.View):
     """ Main application class. """
 
-    def __init__(self, width, height, title):
+    def __init__(self):
         """ Set up the game and initialize the variables. """
-        super().__init__(width, height, title)
+        super().__init__()
 
         # The sprites in this game window can be stored in a dictionary. That makes it easier to iterate through each rendered item.
         self.sprites = {}
