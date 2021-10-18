@@ -8,7 +8,8 @@ class Box(MovingSprite):
         super().__init__()
 
         self.texture = arcade.load_texture(constants.MOVING_WALL_SPRITE)
-        self.scale = 2.2
+        self.scale = 1
+        self.set_size()
         self.center_x = x
         self.center_y = y
 
@@ -20,3 +21,10 @@ class Box(MovingSprite):
         if self.fixing:
             if not self.is_moving:
                 self.fixing = False
+
+    def set_size(self, size=(constants.TILE_SIZE-16)):
+        self.height = size
+        self.width = size
+        # This part doesn't seem to be changing the size of the hitbox...
+        point = size
+        self.points = [[-point, -point], [point, -point], [point, point], [-point, point]]
