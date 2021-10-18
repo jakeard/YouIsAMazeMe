@@ -138,7 +138,7 @@ class MainWindow(arcade.View):
 
         # Put the text on the screen.
         # output = f"Score: {self.score}"
-        # arcade.draw_text(output, 10, 20, arcade.color.WHITE, 14)
+        arcade.draw_text("R - Restart", 20, 20, arcade.color.RUST, 14)
 
     def on_key_press(self, key, modifiers):
         """
@@ -163,7 +163,9 @@ class MainWindow(arcade.View):
 
             player.set_move(direction)
         # All other key presses go after this statement
-
+        if key == arcade.key.R:
+            self.setup()
+       
     def on_key_release(self, key, modifiers):
         """
         Called when the user releases a key.
