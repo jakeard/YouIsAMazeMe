@@ -14,14 +14,16 @@ from game.player.player import PlayerCharacter
 from game.handle_collisions import HandleCollisions
 from game.walls import Walls
 from game.boxes import Box
+from game.win import Win
+from game.lose import Lose
 
 
-class MainWindow(arcade.Window):
+class MainWindow(arcade.View):
     """ Main application class. """
 
-    def __init__(self, width, height, title):
+    def __init__(self):
         """ Set up the game and initialize the variables. """
-        super().__init__(width, height, title)
+        super().__init__()
 
         # The sprites in this game window can be stored in a dictionary. That makes it easier to iterate through each rendered item.
         self.sprites = {}
@@ -31,6 +33,7 @@ class MainWindow(arcade.Window):
         # Set up the player
         self.score = 0
         self.player = None
+        self.won = None
 
 
     def setup(self):
@@ -135,7 +138,7 @@ class MainWindow(arcade.Window):
 
         # Put the text on the screen.
         # output = f"Score: {self.score}"
-        # arcade.draw_text(output, 10, 20, arcade.color.WHITE, 14)
+        arcade.draw_text("R - Restart", 20, 20, arcade.color.RUST, 14)
 
     def on_key_press(self, key, modifiers):
         """
@@ -160,7 +163,9 @@ class MainWindow(arcade.Window):
 
             player.set_move(direction)
         # All other key presses go after this statement
-
+        if key == arcade.key.R:
+            self.setup()
+       
     def on_key_release(self, key, modifiers):
         """
         Called when the user releases a key.
@@ -169,14 +174,19 @@ class MainWindow(arcade.Window):
 
     def on_update(self, delta_time):
         """ Movement and game logic """
-
-
         for key in self.sprites:
             # Runs each sprite's update() method.
             self.sprites[key].update()
             # Runs each sprite's update_animation() method.
             self.sprites[key].update_animation()
         self._cue_action("update")
+        # self.won = False
+        if not self.won is None:
+            if self.won:
+                view = Win()
+            elif not self.won:
+                view = Lose()
+            self.window.show_view(view)
 
     def _cue_action(self, tag):
         """Executes the actions with the given tag.
