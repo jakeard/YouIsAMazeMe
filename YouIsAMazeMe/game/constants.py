@@ -31,11 +31,13 @@ FLAG_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile
 DOOR_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0150.png')
 KEY_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0027.png')
 LOCK_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0028.png')
+BUTTON_SPRITE = os.path.join(PATH, '..', 'assets', 'images', 'button.png')
+BUTTON_PRESSED_SPRITE = os.path.join(PATH, '..', 'assets', 'images', 'button_pressed.png')
 BACKGROUND_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Background', 'background_0002.png')
 START_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'start_screen.png')
 WIN_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'win.png')
 LOSE_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'you_lose.png') 
-BOXES = os.path.join(PATH, '..', 'assets', 'images') # Trim off the type and .png 
+CODE_BLOCKS = os.path.join(PATH, '..', 'assets', 'images') # Trim off the type and .png 
 
 
 

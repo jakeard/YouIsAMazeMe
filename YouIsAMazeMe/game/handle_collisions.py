@@ -21,6 +21,7 @@ class HandleCollisions():
         self.player = sprites['player'][0]
         self.walls = sprites['wall_list']
         self.boxes = sprites['boxes']
+        # self.button = sprites["button"]
 
         self._handle_walls_collision()
         self._handle_box_collision()
@@ -35,6 +36,16 @@ class HandleCollisions():
                     direction = (player.direction[0] * -1, player.direction[1] * -1)
                     player.direction = direction
                     player.target_pos = player.initial_pos
+    
+    # def _handle_button_collision(self):
+    #     player = self.player
+    #     for button in self.button:
+    #         if not self.fixing:
+    #             if player.collides_with_sprite(wall):
+    #                 self.fixing = True
+    #                 direction = (player.direction[0] * -1, player.direction[1] * -1)
+    #                 player.direction = direction
+    #                 player.target_pos = player.initial_pos
 
     def _handle_box_collision(self):
         player = self.player

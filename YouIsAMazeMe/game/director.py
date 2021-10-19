@@ -13,6 +13,7 @@ import game.constants as constants
 from game.player.player import PlayerCharacter
 from game.handle_collisions import HandleCollisions
 from game.walls import Walls
+from game.button import Buttons
 from game.boxes import Box
 from game.win import Win
 from game.lose import Lose
@@ -30,6 +31,7 @@ class MainWindow(arcade.View):
         self.sprites["player"] = None
         self.sprites["boxes"] = None
         self.sprites["wall_list"] = None
+        self.sprites["button"] = None
         # Set up the player
         self.score = 0
         self.player = None
@@ -68,6 +70,9 @@ class MainWindow(arcade.View):
                 self.sprites["wall_list"].append(wall)
             except ValueError:
                 pass
+
+        button = Buttons(80, 108)
+        self.sprites["button"].append(button)
         
         # for i in range (1, constants.SCREEN_HEIGHT + 15, 17):
         #     if i in range (196, 264):
@@ -107,9 +112,9 @@ class MainWindow(arcade.View):
         self.sprites["boxes"].append(box)
         box2 = Box(592, 236, "door")
         self.sprites["boxes"].append(box2)
-        box3 = Box(225, 144, "delete")
+        box3 = Box(272, 364, "delete")
         self.sprites["boxes"].append(box3)
-        box4 = Box(144, 225, ")")
+        box4 = Box(400, 108, ")")
         self.sprites["boxes"].append(box4)
 
 
