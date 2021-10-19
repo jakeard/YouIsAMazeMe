@@ -7,8 +7,8 @@ class Box(MovingSprite):
     def __init__(self, x, y):
         super().__init__()
 
-        self.texture = arcade.load_texture(constants.MOVING_WALL_SPRITE)
-        self.scale = 1
+        self.texture = arcade.load_texture(constants.PRINT)
+        self.scale = .65
         self.set_size()
         self.center_x = x
         self.center_y = y
