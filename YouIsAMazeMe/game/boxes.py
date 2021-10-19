@@ -9,7 +9,7 @@ class Box(MovingSprite):
 
         main_path = constants.BOXES
         # self.texture = arcade.load_texture(constants.DOOR)
-        self.texture = arcade.load_texture(f"{main_path}\{type}")
+        self.texture = arcade.load_texture(f"{main_path}\{type}.png")
         self.scale = .65
         self.set_size()
         self.center_x = x

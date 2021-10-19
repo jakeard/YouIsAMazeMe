@@ -103,10 +103,14 @@ class MainWindow(arcade.View):
         # #     self.sprites["wall_list"].append(wall)
         
         # 592 236
-        box = Box(656, 300, "print.png")
+        box = Box(656, 300, "print")
         self.sprites["boxes"].append(box)
-        box2 = Box(592, 236, "door.png")
+        box2 = Box(592, 236, "door")
         self.sprites["boxes"].append(box2)
+        box3 = Box(225, 144, "delete")
+        self.sprites["boxes"].append(box3)
+        box4 = Box(144, 225, ")")
+        self.sprites["boxes"].append(box4)
 
 
         # wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", constants.SPRITE_SCALING)
