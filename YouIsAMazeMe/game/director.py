@@ -69,42 +69,44 @@ class MainWindow(arcade.View):
             except ValueError:
                 pass
         
-        for i in range (1, constants.SCREEN_HEIGHT + 15, 17):
-            if i in range (196, 264):
-                pass
-            else:
-                wall = Walls(225, i)
-                self.sprites["wall_list"].append(wall)
+        # for i in range (1, constants.SCREEN_HEIGHT + 15, 17):
+        #     if i in range (196, 264):
+        #         pass
+        #     else:
+        #         wall = Walls(225, i)
+        #         self.sprites["wall_list"].append(wall)
         
-        for i in range (1, constants.SCREEN_HEIGHT + 15, 17):
-            if i in range (1, 144) or i in range (400, 625):
-                pass
-            else:
-                wall = Walls(625, i)
-                self.sprites["wall_list"].append(wall)
+        # for i in range (1, constants.SCREEN_HEIGHT + 15, 17):
+        #     if i in range (1, 144) or i in range (400, 625):
+        #         pass
+        #     else:
+        #         wall = Walls(625, i)
+        #         self.sprites["wall_list"].append(wall)
 
-        for i in range (1, constants.SCREEN_WIDTH + 15, 17):
-            if i in range (1, 225) or i in range(361, 484):
-                pass
-            else:
-                wall = Walls(i, 400)
-                self.sprites["wall_list"].append(wall)
+        # for i in range (1, constants.SCREEN_WIDTH + 15, 17):
+        #     if i in range (1, 225) or i in range(361, 484):
+        #         pass
+        #     else:
+        #         wall = Walls(i, 400)
+        #         self.sprites["wall_list"].append(wall)
 
-        #80, 556
-        #80, 492
-        #144, 492
-        #144, 556
-        for i in range(1, 100, 17):
-            wall = Walls(i, 492)
-            self.sprites["wall_list"].append(wall)
-        
-        # for i in range(492, constants.SCREEN_HEIGHT, 17):
-        #     wall = Walls(144, i)
+        # #80, 556
+        # #80, 492
+        # #144, 492
+        # #144, 556
+        # for i in range(1, 100, 17):
+        #     wall = Walls(i, 492)
         #     self.sprites["wall_list"].append(wall)
         
+        # # for i in range(492, constants.SCREEN_HEIGHT, 17):
+        # #     wall = Walls(144, i)
+        # #     self.sprites["wall_list"].append(wall)
+        
         # 592 236
-        box = Box(656, 300)
+        box = Box(656, 300, "print.png")
         self.sprites["boxes"].append(box)
+        box2 = Box(592, 236, "door.png")
+        self.sprites["boxes"].append(box2)
 
 
         # wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", constants.SPRITE_SCALING)

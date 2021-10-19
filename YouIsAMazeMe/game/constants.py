@@ -34,8 +34,8 @@ LOCK_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile
 BACKGROUND_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Background', 'background_0002.png')
 START_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'start_screen.png')
 WIN_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'win.png')
-LOSE_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'you_lose.png')
-PRINT = os.path.join(PATH, '..', 'assets', 'images', 'print.png')
+LOSE_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'you_lose.png') 
+BOXES = os.path.join(PATH, '..', 'assets', 'images') # Trim off the type and .png 
 
 
 
