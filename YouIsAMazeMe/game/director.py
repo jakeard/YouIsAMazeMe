@@ -16,6 +16,7 @@ from game.walls import Walls
 from game.boxes import Box
 from game.win import Win
 from game.lose import Lose
+from game.level_loader import levelLoader
 
 
 class MainWindow(arcade.View):
@@ -43,12 +44,15 @@ class MainWindow(arcade.View):
         
         self.handle_collisions = HandleCollisions()
         # Set up the player
-        self.score = 0
+        loader = levelLoader(self.sprites)
+        loader.load_level()
+
+        """
+        #self.score = 0
         self.player = PlayerCharacter()
 
         self.player.center_x = constants.SCREEN_WIDTH // 2
         self.player.center_y = constants.SCREEN_HEIGHT // 2
-        self.player.scale = constants.CHARACTER_SCALING
 
         self.sprites["player"].append(self.player)
 
@@ -104,7 +108,7 @@ class MainWindow(arcade.View):
         
         # 592 236
         box = Box(656, 300)
-        self.sprites["boxes"].append(box)
+        self.sprites["boxes"].append(box)"""
 
 
         # wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", constants.SPRITE_SCALING)
