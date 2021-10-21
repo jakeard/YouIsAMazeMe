@@ -28,10 +28,10 @@ class MainWindow(arcade.View):
 
         # The sprites in this game window can be stored in a dictionary. That makes it easier to iterate through each rendered item.
         self.sprites = {}
+        self.sprites["button"] = None
         self.sprites["player"] = None
         self.sprites["boxes"] = None
         self.sprites["wall_list"] = None
-        self.sprites["button"] = None
         # Set up the player
         self.score = 0
         self.player = None
