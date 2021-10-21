@@ -60,5 +60,6 @@ class levelLoader():
             # horizontal wall
 
     def next_level(self):
-        pass
+        self.current_level += 1
+        self.load_level()
     
