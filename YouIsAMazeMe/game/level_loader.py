@@ -3,7 +3,7 @@ from game.walls import Walls
 from game.boxes import Box
 from game.player.player import PlayerCharacter
 
-class levelLoader():
+class LevelLoader():
 
     def __init__(self, sprite_dict):
 

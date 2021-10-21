@@ -16,7 +16,7 @@ from game.walls import Walls
 from game.boxes import Box
 from game.win import Win
 from game.lose import Lose
-from game.level_loader import levelLoader
+from game.level_loader import LevelLoader
 
 
 class MainWindow(arcade.View):
@@ -44,7 +44,7 @@ class MainWindow(arcade.View):
         
         self.handle_collisions = HandleCollisions()
         # Set up the player
-        loader = levelLoader(self.sprites)
+        loader = LevelLoader(self.sprites)
         loader.load_level()
 
         """
