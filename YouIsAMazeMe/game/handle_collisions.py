@@ -1,5 +1,6 @@
 import arcade
 from game import constants
+from game.commands import Commands
 # from game.action import Action
 # from game.player.player import PlayerCharacter
 
@@ -18,14 +19,17 @@ class HandleCollisions():
         Args:
             sprites (dict): The game actors {key: tag, value: list}.
         """
+        self.sprites = sprites
         self.player = sprites['player'][0]
         self.walls = sprites['wall_list']
         self.boxes = sprites['boxes']
+        self.button = sprites['button'][0]
         # self.button = sprites["button"]
 
         self._handle_walls_collision()
         self._handle_box_collision()
         self._handle_box_environment_collision()
+        self._handle_button_press()
     
     def _handle_walls_collision(self):
         player = self.player
@@ -77,3 +81,9 @@ class HandleCollisions():
                         #print("hit")
                         # What will this box do to whatever it collides with?
                         pass
+    
+    def _handle_button_press(self):
+        if self.player.collides_with_sprite(self.button):
+            Commands.execute(self.sprites)
+            # run
+            pass
