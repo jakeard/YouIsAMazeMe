@@ -45,7 +45,7 @@ class MainWindow(arcade.View):
             self.sprites[key] = arcade.SpriteList()
         
         self.handle_collisions = HandleCollisions()
-        self.commands = Commands()
+        # self.commands = Commands()
         # Set up the player
         self.score = 0
         self.player = PlayerCharacter()
@@ -162,5 +162,5 @@ class MainWindow(arcade.View):
             tag (string): The given tag.
         """ 
         self.handle_collisions.execute(self.sprites)
-        self.commands.execute(self.sprites)
+        # self.commands.execute(self.sprites)
         # Generate a list of all sprites that collided with the player.

@@ -84,6 +84,6 @@ class HandleCollisions():
     
     def _handle_button_press(self):
         if self.player.collides_with_sprite(self.button):
-            Commands.execute(self.sprites)
+            Commands(self.sprites)
             # run
             pass
