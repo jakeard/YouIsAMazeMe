@@ -1,4 +1,5 @@
 import arcade
+from game import constants
 
 class Commands():
     def __init__(self):
@@ -12,15 +13,5 @@ class Commands():
     def box_order(self):
         for box in self.boxes:
             self.positions.append((box.center_x, box.center_y, box.get_type()))
-        # for i in self.boxes:
-        #     for j in self.boxes:
-        for i in self.positions:
-            for j in self.positions:
-
-                # if i[1] == j[1] and i[1] += 
-
-
-
-
-        # print(self.positions)
-
+        for i in range(0, constants.SCREEN_WIDTH, 64):
+            pass
