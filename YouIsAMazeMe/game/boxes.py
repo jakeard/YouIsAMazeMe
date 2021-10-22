@@ -11,6 +11,7 @@ class Box(MovingSprite):
         self.texture = arcade.load_texture(f"{main_path}\{type}.png")
         self.scale = 1
         self.set_size()
+        self.type = type
         self.center_x = x
         self.center_y = y
 
@@ -29,3 +30,6 @@ class Box(MovingSprite):
         # This part doesn't seem to be changing the size of the hitbox...
         point = size
         self.points = [[-point, -point], [point, -point], [point, point], [-point, point]]
+    
+    def get_type(self):
+        return self.type
