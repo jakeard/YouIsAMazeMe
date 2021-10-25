@@ -12,6 +12,7 @@ class HandleCollisions():
     """
     def __init__(self):
         self.fixing = False
+        self.pressed = False
     
     def execute(self, sprites):
         """Executes the action using the given actors.
@@ -24,6 +25,7 @@ class HandleCollisions():
         self.walls = sprites['wall_list']
         self.boxes = sprites['boxes']
         self.button = sprites['button'][0]
+        self.commands = Commands()
         # self.button = sprites["button"]
 
         self._handle_walls_collision()
@@ -84,6 +86,8 @@ class HandleCollisions():
     
     def _handle_button_press(self):
         if self.player.collides_with_sprite(self.button):
-            Commands(self.sprites)
-            # run
-            pass
+            if self.pressed == False:
+                self.pressed = True
+                self.commands.execute(self.sprites)
+        else:
+            self.pressed = False
