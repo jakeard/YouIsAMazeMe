@@ -1,7 +1,7 @@
 import os
 
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 1280 # Was originally 800
+SCREEN_HEIGHT = 768 # Was originally 600
 SCREEN_TITLE = "Move with a Sprite Animation Example"
 
 # COIN_SCALE = 0.5
