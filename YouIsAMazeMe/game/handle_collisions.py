@@ -88,6 +88,7 @@ class HandleCollisions():
         if self.player.collides_with_sprite(self.button):
             if self.pressed == False:
                 self.pressed = True
+                self.button.is_pressed(self.pressed)
                 self.commands.execute(self.sprites)
         else:
             self.pressed = False
