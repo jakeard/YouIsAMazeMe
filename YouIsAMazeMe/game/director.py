@@ -13,6 +13,7 @@ import game.constants as constants
 from game.player.player import PlayerCharacter
 from game.handle_collisions import HandleCollisions
 from game.commands import Commands
+from game.commands import Commands
 from game.walls import Walls
 from game.button import Buttons
 from game.boxes import Box
@@ -37,7 +38,7 @@ class MainWindow(arcade.View):
         self.score = 0
         self.player = None
         self.won = None
-
+        self.commands = Commands()
 
     def setup(self):
         # Automatically sets up a SpriteList for every key.
@@ -45,6 +46,7 @@ class MainWindow(arcade.View):
             self.sprites[key] = arcade.SpriteList()
         
         self.handle_collisions = HandleCollisions()
+        
         # self.commands = Commands()
         # Set up the player
         self.score = 0
@@ -78,13 +80,15 @@ class MainWindow(arcade.View):
     
         
         # 592 236
-        box = Box(656, 300, "print")
+        box = Box(528, 300, 'base')
+        self.sprites['boxes'].append(box)
+        box = Box(592, 300, "print(")
         self.sprites["boxes"].append(box)
-        box2 = Box(592, 236, "door")
+        box2 = Box(656, 300, "'Hello World!'")
         self.sprites["boxes"].append(box2)
         box3 = Box(272, 364, "delete")
         self.sprites["boxes"].append(box3)
-        box4 = Box(400, 108, ")")
+        box4 = Box(720, 300, ")")
         self.sprites["boxes"].append(box4)
 
 
@@ -147,7 +151,7 @@ class MainWindow(arcade.View):
             # Runs each sprite's update_animation() method.
             self.sprites[key].update_animation()
         self._cue_action("update")
-        # self.won = False
+        # self.won = True
         if not self.won is None:
             if self.won:
                 view = Win()
