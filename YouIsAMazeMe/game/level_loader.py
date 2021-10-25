@@ -1,5 +1,5 @@
 import game.constants as constants
-from game.walls import Walls
+from game.walls import Walls, ThinWalls
 from game.boxes import Box
 from game.player.player import PlayerCharacter
 
@@ -45,17 +45,19 @@ class LevelLoader():
             # player
             player = PlayerCharacter(x,y)
             self.sprites["player"].append(player)
+
         elif sprite == "c":
             # box
             box = Box(x,y)
             self.sprites["boxes"].append(box)
+            
         elif sprite == "vw":
-            wall = Walls(x,y)
+            wall = ThinWalls(x,y,1)
             self.sprites["wall_list"].append(wall)
             # vertical wall
             pass
         elif sprite == "hw":
-            wall = Walls(x,y)
+            wall = ThinWalls(x,y,0)
             self.sprites["wall_list"].append(wall)
             # horizontal wall
 
