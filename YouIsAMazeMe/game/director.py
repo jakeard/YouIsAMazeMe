@@ -74,22 +74,27 @@ class MainWindow(arcade.View):
                 self.sprites["wall_list"].append(wall)
             except ValueError:
                 pass
-
+        
+        # 80, 108
         button = Buttons(80, 108)
+        # button.center_x = 80
+        # button.center_y = 108
         self.sprites["button"].append(button)
     
         
         # 592 236
-        box = Box(528, 300, 'base')
+        box = Box(464, 300, 'start')
         self.sprites['boxes'].append(box)
-        box = Box(592, 300, "print(")
+        box = Box(528, 300, "print(")
         self.sprites["boxes"].append(box)
-        box2 = Box(656, 300, "'Hello World!'")
-        self.sprites["boxes"].append(box2)
-        box3 = Box(272, 364, "delete")
-        self.sprites["boxes"].append(box3)
-        box4 = Box(720, 300, ")")
-        self.sprites["boxes"].append(box4)
+        box = Box(592, 300, "'Hello ")
+        self.sprites["boxes"].append(box)
+        box = Box(656, 300, "World'")
+        self.sprites["boxes"].append(box)
+        box = Box(272, 364, "del(")
+        self.sprites["boxes"].append(box)
+        box = Box(720, 300, ")")
+        self.sprites["boxes"].append(box)
 
 
         # Set the background color
