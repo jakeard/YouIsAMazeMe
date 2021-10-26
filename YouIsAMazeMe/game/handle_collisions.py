@@ -92,3 +92,4 @@ class HandleCollisions():
                 self.commands.execute(self.sprites)
         else:
             self.pressed = False
+            self.button.is_pressed(self.pressed)
