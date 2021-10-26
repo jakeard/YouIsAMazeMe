@@ -87,13 +87,13 @@ class MainWindow(arcade.View):
         self.sprites['boxes'].append(box)
         box = Box(528, 300, "print(")
         self.sprites["boxes"].append(box)
-        box = Box(592, 300, "'Hello ")
+        box = Box(592, 300, "door")
         self.sprites["boxes"].append(box)
-        box = Box(656, 300, "World'")
+        box = Box(656, 300, ")")
         self.sprites["boxes"].append(box)
         box = Box(272, 364, "del(")
         self.sprites["boxes"].append(box)
-        box = Box(720, 300, ")")
+        box = Box(720, 300, "World'")
         self.sprites["boxes"].append(box)
 
 
