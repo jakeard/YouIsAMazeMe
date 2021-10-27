@@ -4,12 +4,19 @@ from game.movingSprite import MovingSprite
 from game import constants
 
 class Box(MovingSprite):
-    def __init__(self, x, y):
-        super().__init__(x,y)
+    def __init__(self, x, y, type):
+        super().__init__()
 
-        self.texture = arcade.load_texture(constants.MOVING_WALL_SPRITE)
+
+        main_path = constants.CODE_BLOCKS
+        self.texture = arcade.load_texture(f"{main_path}\{type}.png")
         self.scale = 1
         self.set_size()
+
+        self.type = type
+        self.center_x = x
+        self.center_y = y
+
 
         self.fixing = False
 
@@ -26,3 +33,6 @@ class Box(MovingSprite):
         # This part doesn't seem to be changing the size of the hitbox...
         point = size
         self.points = [[-point, -point], [point, -point], [point, point], [-point, point]]
+    
+    def get_type(self):
+        return self.type

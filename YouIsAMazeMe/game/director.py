@@ -12,7 +12,10 @@ import random, arcade
 import game.constants as constants
 from game.player.player import PlayerCharacter
 from game.handle_collisions import HandleCollisions
+from game.immovableSprite import ImmovableSprite
+from game.commands import Commands
 from game.walls import Walls
+from game.button import Buttons
 from game.boxes import Box
 from game.win import Win
 from game.lose import Lose
@@ -28,14 +31,15 @@ class MainWindow(arcade.View):
 
         # The sprites in this game window can be stored in a dictionary. That makes it easier to iterate through each rendered item.
         self.sprites = {}
+        self.sprites["button"] = None
         self.sprites["player"] = None
         self.sprites["boxes"] = None
         self.sprites["wall_list"] = None
+        self.sprites["door"] = None
         # Set up the player
         self.score = 0
         self.player = None
         self.won = None
-
 
     def setup(self):
         # Automatically sets up a SpriteList for every key.
@@ -43,6 +47,8 @@ class MainWindow(arcade.View):
             self.sprites[key] = arcade.SpriteList()
         
         self.handle_collisions = HandleCollisions()
+        
+        # self.commands = Commands()
         # Set up the player
         loader = LevelLoader(self.sprites)
         loader.load_level()
@@ -73,57 +79,30 @@ class MainWindow(arcade.View):
             except ValueError:
                 pass
         
-        for i in range (1, constants.SCREEN_HEIGHT + 15, 17):
-            if i in range (196, 264):
-                pass
-            else:
-                wall = Walls(225, i)
-                self.sprites["wall_list"].append(wall)
-        
-        for i in range (1, constants.SCREEN_HEIGHT + 15, 17):
-            if i in range (1, 144) or i in range (400, 625):
-                pass
-            else:
-                wall = Walls(625, i)
-                self.sprites["wall_list"].append(wall)
-
-        for i in range (1, constants.SCREEN_WIDTH + 15, 17):
-            if i in range (1, 225) or i in range(361, 484):
-                pass
-            else:
-                wall = Walls(i, 400)
-                self.sprites["wall_list"].append(wall)
-
-        #80, 556
-        #80, 492
-        #144, 492
-        #144, 556
-        for i in range(1, 100, 17):
-            wall = Walls(i, 492)
-            self.sprites["wall_list"].append(wall)
-        
-        # for i in range(492, constants.SCREEN_HEIGHT, 17):
-        #     wall = Walls(144, i)
-        #     self.sprites["wall_list"].append(wall)
-        
+        # 80, 108
+        button = Buttons(80, 108)
+        # button.center_x = 80
+        # button.center_y = 108
+        self.sprites["button"].append(button)
+    
+        door = ImmovableSprite(constants.SCREEN_WIDTH + constants.TILE_SIZE, constants.SCREEN_HEIGHT + constants.TILE_SIZE, constants.DOOR_SPRITE)
+        self.sprites["door"].append(door)
         # 592 236
-        box = Box(656, 300)
-        self.sprites["boxes"].append(box)"""
 
+        box = Box(464, 300, 'start')
+        self.sprites['boxes'].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND (ex: print, then object, then closing bracket)
+        box = Box(272, 364, "del(")       # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        self.sprites["boxes"].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        box = Box(528, 300, "print(")     # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        self.sprites["boxes"].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        box = Box(592, 300, "door")       # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        self.sprites["boxes"].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        box = Box(656, 300, "')")         # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        self.sprites["boxes"].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        # box = Box(720, 300, "World'")
+        # self.sprites["boxes"].append(box)
 
-        # wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", constants.SPRITE_SCALING)
-        # wall.center_x = 350
-        # wall.center_y = 350
-        # self.sprites["wall_list"].append(wall)
-
-
-        # for i in range(constants.COIN_COUNT):
-        #     coin = arcade.Sprite(":resources:images/items/gold_1.png",
-        #                          scale=0.5)
-        #     coin.center_x = random.randrange(constants.SCREEN_WIDTH)
-        #     coin.center_y = random.randrange(constants.SCREEN_HEIGHT)
-
-        #     self.sprites["coins"].append(coin)
+        self.commands = Commands(self.sprites)
 
         # Set the background color
         arcade.set_background_color(arcade.color.KHAKI)
@@ -184,7 +163,7 @@ class MainWindow(arcade.View):
             # Runs each sprite's update_animation() method.
             self.sprites[key].update_animation()
         self._cue_action("update")
-        # self.won = False
+        # self.won = True
         if not self.won is None:
             if self.won:
                 view = Win()
@@ -199,11 +178,8 @@ class MainWindow(arcade.View):
             tag (string): The given tag.
         """ 
         self.handle_collisions.execute(self.sprites)
-        
+        # self.commands.execute(self.sprites)
         # Generate a list of all sprites that collided with the player.
-        # hit_list = arcade.check_for_collision_with_list(self.player, self.sprites["coins"])
-
-        # Loop through each colliding sprite, remove it, and add to the score.
-        # for coin in hit_list:
-        #     coin.remove_from_sprite_lists()
-        #     self.score += 1
+    
+    def change_win_status(self, status):
+        self.won = status
