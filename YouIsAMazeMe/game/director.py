@@ -12,7 +12,7 @@ import random, arcade
 import game.constants as constants
 from game.player.player import PlayerCharacter
 from game.handle_collisions import HandleCollisions
-from game.commands import Commands
+from game.immovableSprite import ImmovableSprite
 from game.commands import Commands
 from game.walls import Walls
 from game.button import Buttons
@@ -34,11 +34,11 @@ class MainWindow(arcade.View):
         self.sprites["player"] = None
         self.sprites["boxes"] = None
         self.sprites["wall_list"] = None
+        self.sprites["door"] = None
         # Set up the player
         self.score = 0
         self.player = None
         self.won = None
-        self.commands = Commands()
 
     def setup(self):
         # Automatically sets up a SpriteList for every key.
@@ -81,7 +81,8 @@ class MainWindow(arcade.View):
         # button.center_y = 108
         self.sprites["button"].append(button)
     
-        
+        door = ImmovableSprite(constants.SCREEN_WIDTH + constants.TILE_SIZE, constants.SCREEN_HEIGHT + constants.TILE_SIZE, constants.DOOR_SPRITE)
+        self.sprites["door"].append(door)
         # 592 236
         box = Box(464, 300, 'start')
         self.sprites['boxes'].append(box)
@@ -96,7 +97,7 @@ class MainWindow(arcade.View):
         # box = Box(720, 300, "World'")
         # self.sprites["boxes"].append(box)
 
-
+        self.commands = Commands(self.sprites)
         # Set the background color
         arcade.set_background_color(arcade.color.KHAKI)
 

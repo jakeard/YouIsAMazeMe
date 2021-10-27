@@ -3,8 +3,11 @@ from game import constants
 import game.director
 
 class Commands():
-    def __init__(self):
+    def __init__(self, sprites):
         self.file = 'YouIsAMazeMe/game/run.py'
+        self.sprites = sprites
+        self.door = sprites['door'][0]
+        # self.door = sprites['door'][0]
         # self.positions = []
         # self.boxes = sprites['boxes']
         # self.box_order()
@@ -14,7 +17,8 @@ class Commands():
         self.sprites = sprites
         self.boxes = sprites['boxes']
         self.box_order()
-    
+        
+           
     def box_order(self):
         # for box in self.boxes:
         #     self.positions.append((box.center_x, box.center_y, box.get_type()))
@@ -31,7 +35,15 @@ class Commands():
                 cmds.append(box.get_type())
                 search = box.center_x + constants.TILE_SIZE
         if cmds == ['print(', 'door', "')"]:
-            
+            print("A door.")
+            door = self.door
+            door.center_x = constants.TILE_SIZE * 5
+            door.center_y = constants.TILE_SIZE * 1
+        if cmds == ['del(', 'door', "')"]:
+            print("Delete a door.")
+            door = self.door
+            door.center_x = constants.TILE_SIZE + constants.SCREEN_WIDTH
+            door.center_y = constants.TILE_SIZE + constants.SCREEN_HEIGHT
             # game.director.MainWindow.change_win_status(True)
 
 
