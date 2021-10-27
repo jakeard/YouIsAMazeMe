@@ -5,10 +5,12 @@ import game.constants as constants
 
 class MovingSprite(arcade.Sprite):
 
-    def __init__(self):
+    def __init__(self, x, y):
         super().__init__()
 
         # Movement constants
+        self.center_x = x
+        self.center_y = y
         self.is_moving = False
         self.direction = (0,0)
         self.current_pos = (self.center_x, self.center_y)

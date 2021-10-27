@@ -7,13 +7,16 @@ class Box(MovingSprite):
     def __init__(self, x, y, type):
         super().__init__()
 
+
         main_path = constants.CODE_BLOCKS
         self.texture = arcade.load_texture(f"{main_path}\{type}.png")
         self.scale = 1
         self.set_size()
+
         self.type = type
         self.center_x = x
         self.center_y = y
+
 
         self.fixing = False
 

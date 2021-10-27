@@ -58,8 +58,10 @@ class HandleCollisions():
         for box in self.boxes:
             if not self.fixing:
                 if player.collides_with_sprite(box):
-                    # Tell the box to move!
-                    box.set_move(player.direction)
+                    # Check if the box is currently being fixed before it tries to be moved!
+                    if not box.fixing:
+                        # Tell the box to move!
+                        box.set_move(player.direction)
                     self.fixing = True
                     direction = (player.direction[0] * -1, player.direction[1] * -1)
                     player.direction = direction

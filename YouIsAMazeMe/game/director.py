@@ -19,6 +19,7 @@ from game.button import Buttons
 from game.boxes import Box
 from game.win import Win
 from game.lose import Lose
+from game.level_loader import LevelLoader
 
 
 class MainWindow(arcade.View):
@@ -49,12 +50,15 @@ class MainWindow(arcade.View):
         
         # self.commands = Commands()
         # Set up the player
-        self.score = 0
+        loader = LevelLoader(self.sprites)
+        loader.load_level()
+
+        """
+        #self.score = 0
         self.player = PlayerCharacter()
 
         self.player.center_x = constants.SCREEN_WIDTH // 2
         self.player.center_y = constants.SCREEN_HEIGHT // 2
-        self.player.scale = constants.CHARACTER_SCALING
 
         self.sprites["player"].append(self.player)
 
@@ -84,6 +88,7 @@ class MainWindow(arcade.View):
         door = ImmovableSprite(constants.SCREEN_WIDTH + constants.TILE_SIZE, constants.SCREEN_HEIGHT + constants.TILE_SIZE, constants.DOOR_SPRITE)
         self.sprites["door"].append(door)
         # 592 236
+
         box = Box(464, 300, 'start')
         self.sprites['boxes'].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND (ex: print, then object, then closing bracket)
         box = Box(272, 364, "del(")       # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
@@ -98,6 +103,7 @@ class MainWindow(arcade.View):
         # self.sprites["boxes"].append(box)
 
         self.commands = Commands(self.sprites)
+
         # Set the background color
         arcade.set_background_color(arcade.color.KHAKI)
 
