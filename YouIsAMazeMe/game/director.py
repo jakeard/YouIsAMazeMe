@@ -89,12 +89,12 @@ class MainWindow(arcade.View):
         self.sprites["boxes"].append(box)
         box = Box(592, 300, "door")
         self.sprites["boxes"].append(box)
-        box = Box(656, 300, ")")
+        box = Box(656, 300, "')")
         self.sprites["boxes"].append(box)
         box = Box(272, 364, "del(")
         self.sprites["boxes"].append(box)
-        box = Box(720, 300, "World'")
-        self.sprites["boxes"].append(box)
+        # box = Box(720, 300, "World'")
+        # self.sprites["boxes"].append(box)
 
 
         # Set the background color
@@ -173,3 +173,6 @@ class MainWindow(arcade.View):
         self.handle_collisions.execute(self.sprites)
         # self.commands.execute(self.sprites)
         # Generate a list of all sprites that collided with the player.
+    
+    def change_win_status(self, status):
+        self.won = status
