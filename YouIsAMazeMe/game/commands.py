@@ -33,6 +33,7 @@ class Commands():
                 search = original_x + constants.TILE_SIZE
             if box.center_x == search and box.center_y == original_y:
                 cmds.append(box.get_type())
+                # print(box.get_type())
                 search = box.center_x + constants.TILE_SIZE
         if cmds == ['print(', 'door', "')"]:
             print("A door.")

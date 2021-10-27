@@ -85,15 +85,15 @@ class MainWindow(arcade.View):
         self.sprites["door"].append(door)
         # 592 236
         box = Box(464, 300, 'start')
-        self.sprites['boxes'].append(box)
-        box = Box(528, 300, "print(")
-        self.sprites["boxes"].append(box)
-        box = Box(592, 300, "door")
-        self.sprites["boxes"].append(box)
-        box = Box(656, 300, "')")
-        self.sprites["boxes"].append(box)
-        box = Box(272, 364, "del(")
-        self.sprites["boxes"].append(box)
+        self.sprites['boxes'].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND (ex: print, then object, then closing bracket)
+        box = Box(272, 364, "del(")       # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        self.sprites["boxes"].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        box = Box(528, 300, "print(")     # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        self.sprites["boxes"].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        box = Box(592, 300, "door")       # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        self.sprites["boxes"].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        box = Box(656, 300, "')")         # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        self.sprites["boxes"].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
         # box = Box(720, 300, "World'")
         # self.sprites["boxes"].append(box)
 
