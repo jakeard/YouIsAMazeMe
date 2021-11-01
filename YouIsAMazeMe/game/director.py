@@ -53,9 +53,9 @@ class MainWindow(arcade.View):
         loader = LevelLoader(self.sprites)
         loader.load_level()
 
-        """
+        
         #self.score = 0
-        self.player = PlayerCharacter()
+        self.player = PlayerCharacter(0, 0)
 
         self.player.center_x = constants.SCREEN_WIDTH // 2
         self.player.center_y = constants.SCREEN_HEIGHT // 2
@@ -163,7 +163,7 @@ class MainWindow(arcade.View):
             # Runs each sprite's update_animation() method.
             self.sprites[key].update_animation()
         self._cue_action("update")
-        # self.won = True
+        self.won = False
         if not self.won is None:
             if self.won:
                 view = Win()

@@ -48,7 +48,7 @@ class LevelLoader():
 
         elif sprite == "c":
             # box
-            box = Box(x,y)
+            box = Box(x, y, 'start')
             self.sprites["boxes"].append(box)
             
         elif sprite == "vw":
