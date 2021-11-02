@@ -5,10 +5,12 @@ import game.constants as constants
 
 class MovingSprite(arcade.Sprite):
 
-    def __init__(self):
+    def __init__(self, x, y):
         super().__init__()
 
         # Movement constants
+        self.center_x = x
+        self.center_y = y
         self.is_moving = False
         self.direction = (0,0)
         self.current_pos = (self.center_x, self.center_y)
@@ -30,7 +32,7 @@ class MovingSprite(arcade.Sprite):
     def move(self):
         """Method that gets called during update, used to move."""
         # Am I at my target location?
-        #print(f"Current pos: {self.current_pos}, target pos: {self.target_pos}")
+        # print(f"Current pos: {self.current_pos}, target pos: {self.target_pos}")
         if self.target_pos != (self.center_x, self.center_y):
             self.change_x = self.direction[0]*constants.MOVEMENT_SPEED
             self.change_y = self.direction[1]*constants.MOVEMENT_SPEED

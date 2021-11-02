@@ -1,8 +1,11 @@
 import os
 
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 800 # Was originally 800
+SCREEN_HEIGHT = 600 # Was originally 600
 SCREEN_TITLE = "Move with a Sprite Animation Example"
+
+WIDTH_RATIO = SCREEN_WIDTH / 800
+HEIGHT_RATIO = SCREEN_HEIGHT / 600
 
 # COIN_SCALE = 0.5
 # COIN_COUNT = 50
@@ -28,13 +31,16 @@ PLAYER_SPRITE = os.path.join(PATH, '..', 'assets','kenney_assets', 'Characters',
 WALL_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0009.png')
 MOVING_WALL_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0026.png')
 FLAG_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0112.png')
-DOOR_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0150.png')
+DOOR_SPRITE = os.path.join(PATH, '..', 'assets', 'images', 'tile_0150.png')
 KEY_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0027.png')
 LOCK_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0028.png')
+BUTTON_SPRITE = os.path.join(PATH, '..', 'assets', 'images', 'button.png')
+BUTTON_PRESSED_SPRITE = os.path.join(PATH, '..', 'assets', 'images', 'button_pressed.png')
 BACKGROUND_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Background', 'background_0002.png')
 START_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'start_screen.png')
 WIN_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'win.png')
-LOSE_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'you_lose.png')
+LOSE_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'you_lose.png') 
+CODE_BLOCKS = os.path.join(PATH, '..', 'assets', 'images') # Trim off the type and .png 
 
 
 

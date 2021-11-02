@@ -1,5 +1,6 @@
 import arcade
 from game import constants
+from game.commands import Commands
 # from game.action import Action
 # from game.player.player import PlayerCharacter
 
@@ -11,6 +12,7 @@ class HandleCollisions():
     """
     def __init__(self):
         self.fixing = False
+        self.pressed = False
     
     def execute(self, sprites):
         """Executes the action using the given actors.
@@ -18,13 +20,18 @@ class HandleCollisions():
         Args:
             sprites (dict): The game actors {key: tag, value: list}.
         """
+        self.sprites = sprites
         self.player = sprites['player'][0]
         self.walls = sprites['wall_list']
         self.boxes = sprites['boxes']
+        # self.button = sprites['button'][0]
+        self.commands = Commands(sprites)
+        # self.button = sprites["button"]
 
         self._handle_walls_collision()
         self._handle_box_collision()
         self._handle_box_environment_collision()
+        # self._handle_button_press()
     
     def _handle_walls_collision(self):
         player = self.player
@@ -35,14 +42,26 @@ class HandleCollisions():
                     direction = (player.direction[0] * -1, player.direction[1] * -1)
                     player.direction = direction
                     player.target_pos = player.initial_pos
+    
+    # def _handle_button_collision(self):
+    #     player = self.player
+    #     for button in self.button:
+    #         if not self.fixing:
+    #             if player.collides_with_sprite(wall):
+    #                 self.fixing = True
+    #                 direction = (player.direction[0] * -1, player.direction[1] * -1)
+    #                 player.direction = direction
+    #                 player.target_pos = player.initial_pos
 
     def _handle_box_collision(self):
         player = self.player
         for box in self.boxes:
             if not self.fixing:
                 if player.collides_with_sprite(box):
-                    # Tell the box to move!
-                    box.set_move(player.direction)
+                    # Check if the box is currently being fixed before it tries to be moved!
+                    if not box.fixing:
+                        # Tell the box to move!
+                        box.set_move(player.direction)
                     self.fixing = True
                     direction = (player.direction[0] * -1, player.direction[1] * -1)
                     player.direction = direction
@@ -66,3 +85,13 @@ class HandleCollisions():
                         #print("hit")
                         # What will this box do to whatever it collides with?
                         pass
+    
+    def _handle_button_press(self):
+        if self.player.collides_with_sprite(self.button):
+            if self.pressed == False:
+                self.pressed = True
+                self.button.is_pressed(self.pressed)
+                self.commands.execute(self.sprites)
+        else:
+            self.pressed = False
+            self.button.is_pressed(self.pressed)

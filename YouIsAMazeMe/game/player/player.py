@@ -12,12 +12,14 @@ def load_texture_pair(filename):
     ]
 
 class PlayerCharacter(MovingSprite):
-    def __init__(self):
+    def __init__(self, x, y):
         
         # Set up parent class
-        super().__init__()
+        super().__init__(x,y)
 
         # Default to face-right
+        self.center_x = x
+        self.center_y = y
         self.past_x = None
         self.past_y = None
         self.past_direction = None
