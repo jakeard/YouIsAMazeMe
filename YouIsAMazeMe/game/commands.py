@@ -28,25 +28,26 @@ class Commands():
         # response = None
         cmds = []
         for box in boxes:
-            if box == boxes[0]:
+            if box.get_type() == "start":
                 original_x = box.center_x
                 original_y = box.center_y
                 search = original_x + constants.TILE_SIZE
-            if box.center_x == search and box.center_y == original_y:
-                cmds.append(box.get_type())
-                print(box.get_type())
-                search = box.center_x + constants.TILE_SIZE
-        if cmds == ['print(', 'door', ")"]:
-            print("A door.")
-            door = self.door
-            door.center_x = 704
-            door.center_y = constants.TILE_SIZE * 1
-        if cmds == ['del(', 'door', ")"]:
-            print("Delete a door.")
-            door = self.door
-            door.center_x = constants.TILE_SIZE + constants.SCREEN_WIDTH
-            door.center_y = constants.TILE_SIZE + constants.SCREEN_HEIGHT
-            # game.director.MainWindow.change_win_status(True)
+                for box in boxes:                       
+                    if box.center_x == search and box.center_y == original_y:
+                        cmds.append(box.get_type())
+                        print(box.get_type())
+                        search = box.center_x + constants.TILE_SIZE
+                if cmds == ['print(', 'door', ")"]:
+                    print("A door.")
+                    door = self.door
+                    door.center_x = 704
+                    door.center_y = 536
+                if cmds == ['del(', 'door', ")"]:
+                    print("Delete a door.")
+                    door = self.door
+                    door.center_x = constants.TILE_SIZE + constants.SCREEN_WIDTH
+                    door.center_y = constants.TILE_SIZE + constants.SCREEN_HEIGHT
+                    # game.director.MainWindow.change_win_status(True)
 
 
 
