@@ -6,7 +6,7 @@ class Commands():
     def __init__(self, sprites):
         self.file = 'YouIsAMazeMe/game/run.py'
         self.sprites = sprites
-        self.door = sprites['door'][0]
+        # self.door = sprites['door'][0]
         # self.door = sprites['door'][0]
         # self.positions = []
         # self.boxes = sprites['boxes']

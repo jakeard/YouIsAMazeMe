@@ -55,50 +55,50 @@ class MainWindow(arcade.View):
 
         
         #self.score = 0
-        self.player = PlayerCharacter(0, 0)
+        # self.player = PlayerCharacter(0, 0)
 
-        self.player.center_x = constants.SCREEN_WIDTH // 2
-        self.player.center_y = constants.SCREEN_HEIGHT // 2
+        # self.player.center_x = constants.SCREEN_WIDTH // 2
+        # self.player.center_y = constants.SCREEN_HEIGHT // 2
 
-        self.sprites["player"].append(self.player)
+        # self.sprites["player"].append(self.player)
 
-        for i in range(1, constants.SCREEN_HEIGHT + 15, 17):
-            wall = Walls(8, i)
-            self.sprites["wall_list"].append(wall)
-            wall = Walls(constants.SCREEN_WIDTH - 8, i)
-            self.sprites["wall_list"].append(wall)
-        for i in range(1, constants.SCREEN_WIDTH, 17):
-            try:
-                wall = Walls(i, constants.SCREEN_HEIGHT - 8)
-                self.sprites["wall_list"].append(wall)
-            except ValueError:
-                pass
-            try:
-                wall = Walls(i, 8)
-                self.sprites["wall_list"].append(wall)
-            except ValueError:
-                pass
+        # for i in range(1, constants.SCREEN_HEIGHT + 15, 17):
+        #     wall = Walls(8, i)
+        #     self.sprites["wall_list"].append(wall)
+        #     wall = Walls(constants.SCREEN_WIDTH - 8, i)
+        #     self.sprites["wall_list"].append(wall)
+        # for i in range(1, constants.SCREEN_WIDTH, 17):
+        #     try:
+        #         wall = Walls(i, constants.SCREEN_HEIGHT - 8)
+        #         self.sprites["wall_list"].append(wall)
+        #     except ValueError:
+        #         pass
+        #     try:
+        #         wall = Walls(i, 8)
+        #         self.sprites["wall_list"].append(wall)
+        #     except ValueError:
+        #         pass
         
         # 80, 108
-        button = Buttons(80, 108)
+        # button = Buttons(80, 108)
         # button.center_x = 80
         # button.center_y = 108
-        self.sprites["button"].append(button)
+        # self.sprites["button"].append(button)
     
-        door = ImmovableSprite(constants.SCREEN_WIDTH + constants.TILE_SIZE, constants.SCREEN_HEIGHT + constants.TILE_SIZE, constants.DOOR_SPRITE)
-        self.sprites["door"].append(door)
+        # door = ImmovableSprite(constants.SCREEN_WIDTH + constants.TILE_SIZE, constants.SCREEN_HEIGHT + constants.TILE_SIZE, constants.DOOR_SPRITE)
+        # self.sprites["door"].append(door)
         # 592 236
 
-        box = Box(464, 300, 'start')
-        self.sprites['boxes'].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND (ex: print, then object, then closing bracket)
-        box = Box(272, 364, "del(")       # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
-        self.sprites["boxes"].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
-        box = Box(528, 300, "print(")     # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
-        self.sprites["boxes"].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
-        box = Box(592, 300, "door")       # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
-        self.sprites["boxes"].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
-        box = Box(656, 300, "')")         # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
-        self.sprites["boxes"].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        # box = Box(464, 300, 'start')
+        # self.sprites['boxes'].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND (ex: print, then object, then closing bracket)
+        # box = Box(272, 364, "del(")       # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        # self.sprites["boxes"].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        # box = Box(528, 300, "print(")     # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        # self.sprites["boxes"].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        # box = Box(592, 300, "door")       # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        # self.sprites["boxes"].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        # box = Box(656, 300, "')")         # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
+        # self.sprites["boxes"].append(box) # BLOCKS NEED TO GO IN ORDER THAT THEY WOULD BE IN NORMALLY FOR A COMMAND
         # box = Box(720, 300, "World'")
         # self.sprites["boxes"].append(box)
 
@@ -163,7 +163,7 @@ class MainWindow(arcade.View):
             # Runs each sprite's update_animation() method.
             self.sprites[key].update_animation()
         self._cue_action("update")
-        self.won = False
+        # self.won = False
         if not self.won is None:
             if self.won:
                 view = Win()

@@ -24,14 +24,14 @@ class HandleCollisions():
         self.player = sprites['player'][0]
         self.walls = sprites['wall_list']
         self.boxes = sprites['boxes']
-        self.button = sprites['button'][0]
+        # self.button = sprites['button'][0]
         self.commands = Commands(sprites)
         # self.button = sprites["button"]
 
         self._handle_walls_collision()
         self._handle_box_collision()
         self._handle_box_environment_collision()
-        self._handle_button_press()
+        # self._handle_button_press()
     
     def _handle_walls_collision(self):
         player = self.player
