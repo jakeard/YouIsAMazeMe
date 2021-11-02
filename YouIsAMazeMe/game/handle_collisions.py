@@ -24,14 +24,15 @@ class HandleCollisions():
         self.player = sprites['player'][0]
         self.walls = sprites['wall_list']
         self.boxes = sprites['boxes']
+        # self.door = sprites['door']
         # self.button = sprites['button'][0]
         self.commands = Commands(sprites)
-        # self.button = sprites["button"]
+        self.button = sprites["button"]
 
         self._handle_walls_collision()
         self._handle_box_collision()
         self._handle_box_environment_collision()
-        # self._handle_button_press()
+        self._handle_button_press()
     
     def _handle_walls_collision(self):
         player = self.player
@@ -87,11 +88,13 @@ class HandleCollisions():
                         pass
     
     def _handle_button_press(self):
-        if self.player.collides_with_sprite(self.button):
-            if self.pressed == False:
-                self.pressed = True
-                self.button.is_pressed(self.pressed)
-                self.commands.execute(self.sprites)
-        else:
-            self.pressed = False
-            self.button.is_pressed(self.pressed)
+        player = self.player
+        for button in self.button:
+            if player.collides_with_sprite(button):
+                if button.pressed == False:
+                    button.pressed = True
+                    button.is_pressed(button.pressed)
+                    self.commands.execute(self.sprites)
+            else:
+                button.pressed = False
+                button.is_pressed(self.pressed)

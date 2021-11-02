@@ -1,13 +1,15 @@
 import game.constants as constants
 from game.walls import Walls, ThinWalls
 from game.boxes import Box
+from game.button import Buttons
 from game.player.player import PlayerCharacter
+from game.immovableSprite import ImmovableSprite
 
 class LevelLoader():
 
     def __init__(self, sprite_dict):
 
-        self.current_level = 0
+        self.current_level = 1
         self.level_dir = "YouIsAMazeMe/levels"
         self.sprites = sprite_dict
         
@@ -45,10 +47,40 @@ class LevelLoader():
             # player
             player = PlayerCharacter(x,y)
             self.sprites["player"].append(player)
+        
+        elif sprite == "b":
+            button = Buttons(x, y)
+            self.sprites["button"].append(button)
+        
+        elif sprite == "d":
+            # door
+            door = ImmovableSprite(x, y, constants.DOOR_SPRITE)
+            print(x, y)
+            self.sprites["door"].append(door)
 
-        elif sprite == "c":
+        elif sprite == "start":
             # box
             box = Box(x, y, 'start')
+            self.sprites["boxes"].append(box)
+        
+        elif sprite == "print":
+            # box
+            box = Box(x, y, 'print(')
+            self.sprites["boxes"].append(box)
+        
+        elif sprite == "del":
+            # box
+            box = Box(x, y, 'del(')
+            self.sprites["boxes"].append(box)
+        
+        elif sprite == "door":
+            # box
+            box = Box(x, y, 'door')
+            self.sprites["boxes"].append(box)
+        
+        elif sprite == ")":
+            # box
+            box = Box(x, y, ')')
             self.sprites["boxes"].append(box)
             
         elif sprite == "vw":
@@ -64,4 +96,3 @@ class LevelLoader():
     def next_level(self):
         self.current_level += 1
         self.load_level()
-    
