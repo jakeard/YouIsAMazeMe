@@ -9,6 +9,7 @@ class Buttons(arcade.Sprite):
                          arcade.load_texture(constants.BUTTON_PRESSED_SPRITE)]
         self.center_x = x
         self.center_y = y
+        self.is_pressed(False)
         
     def is_pressed(self, pressed):
         if pressed:
