@@ -25,9 +25,11 @@ from game.level_loader import LevelLoader
 class MainWindow(arcade.View):
     """ Main application class. """
 
-    def __init__(self):
+    def __init__(self, level=None):
         """ Set up the game and initialize the variables. """
         super().__init__()
+        if level is not None:
+            self.level = level
 
         # The sprites in this game window can be stored in a dictionary. That makes it easier to iterate through each rendered item.
         self.sprites = {}
