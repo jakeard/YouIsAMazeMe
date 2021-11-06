@@ -1,7 +1,7 @@
 import os
 
-SCREEN_WIDTH = 800 # Was originally 800
-SCREEN_HEIGHT = 600 # Was originally 600
+SCREEN_WIDTH = 1216 # Was originally 800
+SCREEN_HEIGHT = 768 # Was originally 600
 SCREEN_TITLE = "Move with a Sprite Animation Example"
 
 WIDTH_RATIO = SCREEN_WIDTH / 800
