@@ -27,21 +27,29 @@ class Commands():
         search = None
         # response = None
         cmds = []
+        searching = True
         for box in boxes:
             if box.get_type() == "start":
                 original_x = box.center_x
                 original_y = box.center_y
                 search = original_x + constants.TILE_SIZE
-                for box in boxes:                       
-                    if box.center_x == search and box.center_y == original_y:
-                        cmds.append(box.get_type())
-                        print(box.get_type())
-                        search = box.center_x + constants.TILE_SIZE
+                count = 0
+                while searching:
+                    count += 1
+                    for box in boxes: 
+                        end = "Nope!"                      
+                        if box.center_x == search and box.center_y == original_y:
+                            cmds.append(box.get_type())
+                            end = box.get_type()
+                            print(box.get_type())
+                            search = box.center_x + constants.TILE_SIZE
+                        if end == ")" or count == len(boxes):
+                            searching = False
                 if cmds == ['print(', 'door', ")"]:
                     print("A door.")
                     door = self.door
                     door.center_x = 704
-                    door.center_y = 536
+                    door.center_y = 704
                 if cmds == ['del(', 'door', ")"]:
                     print("Delete a door.")
                     door = self.door
