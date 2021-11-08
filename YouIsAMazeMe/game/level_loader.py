@@ -9,7 +9,7 @@ class LevelLoader():
 
     def __init__(self, sprite_dict):
 
-        self.current_level = 0
+        self.current_level = 1
         self.level_dir = "YouIsAMazeMe/levels"
         self.sprites = sprite_dict
         
