@@ -8,7 +8,7 @@ class Box(MovingSprite):
 
 
         main_path = constants.CODE_BLOCKS
-        self.texture = arcade.load_texture(f"{main_path}\{type}.png")
+        self.texture = arcade.load_texture(f"{main_path}/{type}.png")
         self.scale = 1
         self.set_size()
         self.type = type

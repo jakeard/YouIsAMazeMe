@@ -38,6 +38,7 @@ class MainWindow(arcade.View):
         self.sprites["boxes"] = None
         self.sprites["wall_list"] = None
         self.sprites["door"] = None
+        self.sprites["enemies"] = None
         # Set up the player
         self.score = 0
         self.player = None
@@ -164,6 +165,7 @@ class MainWindow(arcade.View):
             self.sprites[key].update()
             # Runs each sprite's update_animation() method.
             self.sprites[key].update_animation()
+
         self._cue_action("update")
         # self.won = False
         if not self.won is None:
