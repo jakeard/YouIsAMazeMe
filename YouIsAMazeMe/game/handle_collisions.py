@@ -25,12 +25,7 @@ class HandleCollisions():
         self.player = sprites['player'][0]
         self.walls = sprites['wall_list']
         self.boxes = sprites['boxes']
-# <<<<<<< HEAD
-#         self.door = sprites['door'][0]
-
         self.enemies = sprites['enemies']
-        # self.door = sprites['door']
-        # self.button = sprites['button'][0]
         self.commands = Commands(sprites)
         self.button = sprites["button"]
 
@@ -38,9 +33,6 @@ class HandleCollisions():
         self._handle_box_collision()
         self._handle_box_environment_collision()
         self._handle_button_press()
-
-        # self._handle_door_collision()
-
         self._handle_enemy_collision()
 
     
@@ -53,16 +45,6 @@ class HandleCollisions():
                     direction = (player.direction[0] * -1, player.direction[1] * -1)
                     player.direction = direction
                     player.target_pos = player.initial_pos
-    
-    # def _handle_button_collision(self):
-    #     player = self.player
-    #     for button in self.button:
-    #         if not self.fixing:
-    #             if player.collides_with_sprite(wall):
-    #                 self.fixing = True
-    #                 direction = (player.direction[0] * -1, player.direction[1] * -1)
-    #                 player.direction = direction
-    #                 player.target_pos = player.initial_pos
 
     def _handle_box_collision(self):
         player = self.player
@@ -78,10 +60,6 @@ class HandleCollisions():
                     player.direction = direction
                     player.target_pos = player.initial_pos
 
-        # if player.collides_with_sprite(box):
-        #     # velocity of player
-        #     box.center_x = int(constants.MAX_X / 2)
-        #     box.center_y += int(constants.player_Y)
 
     def _handle_box_environment_collision(self):
         for box in self.boxes:

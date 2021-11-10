@@ -15,8 +15,6 @@ class Lose(arcade.View):
         self.texture.draw_sized(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2, constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)
         arcade.draw_text('Retry', constants.SCREEN_WIDTH / 2 + 1 * constants.WIDTH_RATIO, constants.SCREEN_HEIGHT / 2 - 200 * constants.HEIGHT_RATIO, arcade.color.CAMEL, font_size = 40, anchor_x='center')
         arcade.draw_text('Quit', constants.SCREEN_WIDTH / 2 - 10 * constants.WIDTH_RATIO, constants.SCREEN_HEIGHT / 2 - 270 * constants.HEIGHT_RATIO, arcade.color.CAMEL, font_size = 40, anchor_x='center')
-        # arcade.draw_rectangle_outline(constants.SCREEN_WIDTH / 2 + 3, constants.SCREEN_HEIGHT / 2 - 185, 130, 55, arcade.color.WHITE)
-        # arcade.draw_rectangle_outline(constants.SCREEN_WIDTH / 2 - 8, constants.SCREEN_HEIGHT / 2 - 251, 107, 49, arcade.color.WHITE)
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         if _x in range(int(320 * constants.WIDTH_RATIO), int(483 * constants.WIDTH_RATIO)) and _y in range(int(83 * constants.HEIGHT_RATIO), int(148 * constants.HEIGHT_RATIO)):

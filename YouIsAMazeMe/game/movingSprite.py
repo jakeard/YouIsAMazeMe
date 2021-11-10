@@ -24,11 +24,6 @@ class MovingSprite(arcade.Sprite):
         self.target_pos = ((self.center_x+(direction[0]*constants.TILE_SIZE)), (self.center_y+(direction[1]*constants.TILE_SIZE)))
         print(f"Current pos: {self.current_pos}, target pos: {self.target_pos}")
     
-    # def set_move_collision(self, target_x, target_y, direction: tuple = (0,0)):
-    #     self.direction = direction
-    #     self.is_moving = True
-    #     self.target_pos = (target_x, target_y)
-    
     def move(self):
         """Method that gets called during update, used to move."""
         # Am I at my target location?
