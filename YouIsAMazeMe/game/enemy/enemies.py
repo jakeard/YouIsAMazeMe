@@ -51,7 +51,7 @@ class EnemyBasic(MovingSprite):
         # Load textures for idle standing
         #self.idle_texture_pair = load_texture_pair(f"{main_path}_idle.png")
         # Player Select
-        x = 6
+        x = 4
 
         self.idle_texture_pair = load_texture_pair(f"{main_path}{x}.png")
 
