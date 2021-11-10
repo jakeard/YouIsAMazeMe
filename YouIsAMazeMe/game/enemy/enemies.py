@@ -24,7 +24,7 @@ class EnemyBasic(MovingSprite):
         self.fixing = False
 
         self.idle_counter = 0
-        self.update_frames = 300 # runs approx. 60 frames per second, so this is about 5 seconds.
+        self.update_frames = random.randint(200,275) # runs approx. 60 frames per second, choose a random time interval to move.
 
         self.center_x = x
         self.center_y = y
@@ -118,7 +118,7 @@ class EnemyMover(EnemyBasic):
         super().__init__(x,y)
 
         self.can_push = True
-        self.update_frames = 175
+        self.update_frames = random.randint(150,200)
 
         main_path = constants.PLAYER_SPRITE
 
