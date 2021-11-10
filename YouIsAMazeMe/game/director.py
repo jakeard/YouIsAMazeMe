@@ -30,6 +30,8 @@ class MainWindow(arcade.View):
         super().__init__()
         if level is not None:
             self.level = level
+        else:
+            self.level = 1
 
         # The sprites in this game window can be stored in a dictionary. That makes it easier to iterate through each rendered item.
         self.sprites = {}
@@ -52,7 +54,7 @@ class MainWindow(arcade.View):
         
         # self.commands = Commands()
         # Set up the player
-        loader = LevelLoader(self.sprites)
+        loader = LevelLoader(self.sprites, self.level)
         loader.load_level()
 
         
@@ -168,7 +170,7 @@ class MainWindow(arcade.View):
         # self.won = False
         if not self.won is None:
             if self.won:
-                view = Win()
+                view = Win(self.level)
             elif not self.won:
                 view = Lose()
             self.window.show_view(view)
@@ -180,6 +182,7 @@ class MainWindow(arcade.View):
             tag (string): The given tag.
         """ 
         self.handle_collisions.execute(self.sprites)
+        self.won = self.handle_collisions.handle_door_collision(self.sprites)
         # self.commands.execute(self.sprites)
         # Generate a list of all sprites that collided with the player.
     

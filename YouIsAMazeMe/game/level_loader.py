@@ -7,9 +7,9 @@ from game.immovableSprite import ImmovableSprite
 
 class LevelLoader():
 
-    def __init__(self, sprite_dict):
+    def __init__(self, sprite_dict, level):
 
-        self.current_level = 1
+        self.current_level = level
         self.level_dir = "YouIsAMazeMe/levels"
         self.sprites = sprite_dict
         
