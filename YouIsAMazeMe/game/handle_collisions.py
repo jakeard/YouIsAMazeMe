@@ -131,18 +131,23 @@ class HandleCollisions():
                 # Test to see if it collides with boxes, or the wall.
                 hitlist = arcade.check_for_collision_with_lists(enemy, [self.walls, self.boxes])
                 if len(hitlist) != 0:
-                    if enemy.can_push:
-                        # Special code if the enemy runs into a box
-                        for collision in hitlist:
-                            if isinstance(collision, Box) and not collision.fixing: # is the object a box, and is it stationary?
-                                # did the player push the box, or did the enemy run into the box?
-                                collision.target_pos = collision.initial_pos
-                                if enemy.is_moving:
-                                    collision.direction = (enemy.direction)
+                    # Special code if the enemy runs into a box
+                    for collision in hitlist:
+                        if isinstance(collision, Box) and not collision.fixing: # is the object a box, and is it stationary?
+                            # did the player push the box, or did the enemy run into the box?
+                            collision.target_pos = collision.initial_pos
+                            # If the enemy is moving, and they can legally push the block:
+                            if enemy.is_moving and enemy.can_push:
+                                # If the box wasn't moving beforehand...
+                                if not collision.is_moving:
+                                    collision.set_move(enemy.direction)
                                 else:
-                                    # If the enemy didn't move into it, make it reverse direction instead.
-                                    collision.direction = ((collision.direction[0]*-1, collision.direction[1]*-1))
-                                collision.fixing = True
+                                    # Otherwise, just change the direction only.
+                                    collision.direction = (enemy.direction)
+                            else:
+                                # If the enemy didn't move into it, make it reverse direction instead.
+                                collision.direction = ((collision.direction[0]*-1, collision.direction[1]*-1))
+                            collision.fixing = True
                     enemy.fixing = True
                     direction = (enemy.direction[0] * -1, enemy.direction[1] * -1)
                     enemy.direction = direction

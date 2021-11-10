@@ -18,7 +18,7 @@ class EnemyBasic(MovingSprite):
         super().__init__(x, y)
         # How does this interract with the character?
         self.can_damage = False
-        self.can_push = True
+        self.can_push = False
         self.can_block = False
         
         self.fixing = False
@@ -113,7 +113,12 @@ class EnemyBasic(MovingSprite):
     
 
 class EnemyMover(EnemyBasic):
-    pass
+
+    def __init__(self,x,y):
+        super().__init__(self, x,y)
+
+        self.can_push = True
+    
 
 class EnemyAttacker(EnemyBasic):
     pass
