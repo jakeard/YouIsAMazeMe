@@ -1,6 +1,7 @@
 import arcade
 from game import constants
 from game.commands import Commands
+from game.boxes import Box
 # from game.action import Action
 # from game.player.player import PlayerCharacter
 
@@ -24,6 +25,10 @@ class HandleCollisions():
         self.player = sprites['player'][0]
         self.walls = sprites['wall_list']
         self.boxes = sprites['boxes']
+# <<<<<<< HEAD
+#         self.door = sprites['door'][0]
+
+        self.enemies = sprites['enemies']
         # self.door = sprites['door']
         # self.button = sprites['button'][0]
         self.commands = Commands(sprites)
@@ -33,6 +38,11 @@ class HandleCollisions():
         self._handle_box_collision()
         self._handle_box_environment_collision()
         self._handle_button_press()
+
+        # self._handle_door_collision()
+
+        self._handle_enemy_collision()
+
     
     def _handle_walls_collision(self):
         player = self.player
@@ -98,3 +108,55 @@ class HandleCollisions():
             else:
                 button.pressed = False
                 button.is_pressed(self.pressed)
+
+    def _handle_enemy_collision(self):
+        for enemy in self.enemies:
+            # enemy.can_push
+            # enemy.can_block
+            # enemy.can_damage
+            # enemy.can_be_pushed
+            player = self.player
+
+            # For when the player runs into the enemy
+            if player.collides_with_sprite(enemy) and not self.fixing:
+
+                # Is the enemy standing still, and can it be pushed?
+                if not enemy.fixing and not enemy.can_block:
+                    # Send the enemy away!
+                    enemy.set_move(player.direction)
+                    if enemy.can_damage:
+                        # TODO: Add code here, telling the player/director/whoever that the player took damage
+                        pass
+                
+                self.fixing = True
+                direction = (player.direction[0] * -1, player.direction[1] * -1)
+                player.direction = direction
+                player.target_pos = player.initial_pos
+                
+
+            if not enemy.fixing:
+                # Test to see if it collides with boxes, or the wall.
+                hitlist = arcade.check_for_collision_with_lists(enemy, [self.walls, self.boxes])
+                if len(hitlist) != 0:
+                    if enemy.can_push:
+                        # Special code if the enemy runs into a box
+                        for collision in hitlist:
+                            if isinstance(collision, Box) and not collision.fixing: # is the object a box, and is it stationary?
+                                # did the player push the box, or did the enemy run into the box?
+                                collision.target_pos = collision.initial_pos
+                                if enemy.is_moving:
+                                    collision.direction = (enemy.direction)
+                                else:
+                                    # If the enemy didn't move into it, make it reverse direction instead.
+                                    collision.direction = ((collision.direction[0]*-1, collision.direction[1]*-1))
+                                collision.fixing = True
+                    enemy.fixing = True
+                    direction = (enemy.direction[0] * -1, enemy.direction[1] * -1)
+                    enemy.direction = direction
+                    enemy.target_pos = enemy.initial_pos
+                    
+    def handle_door_collision(self, sprites):
+        player = sprites['player'][0]
+        door = sprites['door'][0]
+        if player.collides_with_sprite(door):
+            return True

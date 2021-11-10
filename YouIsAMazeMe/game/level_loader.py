@@ -4,12 +4,13 @@ from game.boxes import Box
 from game.button import Buttons
 from game.player.player import PlayerCharacter
 from game.immovableSprite import ImmovableSprite
+import game.enemy.enemies as enemies
 
 class LevelLoader():
 
-    def __init__(self, sprite_dict):
+    def __init__(self, sprite_dict, level):
 
-        self.current_level = 1
+        self.current_level = level
         self.level_dir = "YouIsAMazeMe/levels"
         self.sprites = sprite_dict
         
@@ -97,6 +98,10 @@ class LevelLoader():
             wall = ThinWalls(x,y,0)
             self.sprites["wall_list"].append(wall)
             # horizontal wall
+
+        elif sprite == "eb":
+            enemy_basic = enemies.EnemyBasic(x,y)
+            self.sprites["enemies"].append(enemy_basic)
 
     def next_level(self):
         self.current_level += 1
