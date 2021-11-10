@@ -9,7 +9,7 @@ HEIGHT_RATIO = SCREEN_HEIGHT / 600
 
 # COIN_SCALE = 0.5
 # COIN_COUNT = 50
-CHARACTER_SCALING = 1
+CHARACTER_SCALING = .9
 SPRITE_SCALING = 1
 
 # How fast to move, and how fast to run the animation
