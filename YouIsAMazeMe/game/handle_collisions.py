@@ -114,7 +114,7 @@ class HandleCollisions():
             if player.collides_with_sprite(enemy) and not self.fixing:
 
                 # Is the enemy standing still, and can it be pushed?
-                if not enemy.fixing and not enemy.can_block:
+                if not enemy.is_moving and not enemy.fixing and not enemy.can_block:
                     # Send the enemy away!
                     enemy.set_move(player.direction)
                     if enemy.can_damage:
