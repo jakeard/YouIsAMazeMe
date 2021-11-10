@@ -16,9 +16,6 @@ class Start_View(arcade.View):
         arcade.draw_text("You Is AMaze Me", constants.SCREEN_WIDTH / 2 + 25 * constants.WIDTH_RATIO, constants.SCREEN_HEIGHT / 2 + 45 * constants.HEIGHT_RATIO, arcade.color.RUST, font_size=35, anchor_x='center')
         arcade.draw_text('Play', constants.SCREEN_WIDTH / 2  + 1 * constants.WIDTH_RATIO, constants.SCREEN_HEIGHT / 2 - 100 * constants.HEIGHT_RATIO, arcade.color.RUST, font_size=35, anchor_x='center')
         arcade.draw_text('Select Level', constants.SCREEN_WIDTH / 2 + 3 * constants.WIDTH_RATIO, constants.SCREEN_HEIGHT / 2 - 160 * constants.HEIGHT_RATIO, arcade.color.RUST, font_size = 35, anchor_x='center')
-        # arcade.draw_rectangle_outline(constants.SCREEN_WIDTH / 2 + 2, constants.SCREEN_HEIGHT / 2 - 85, 95, 50, arcade.color.BLACK)
-        # arcade.draw_lrtb_rectangle_outline(int(354 * constants.WIDTH_RATIO), int(451 * constants.WIDTH_RATIO), int(241 * constants.HEIGHT_RATIO), int(190 * constants.HEIGHT_RATIO), arcade.color.BLACK)
-        # arcade.draw_lrtb_rectangle_outline(int(276 * constants.WIDTH_RATIO), int(532 * constants.WIDTH_RATIO), int(177 * constants.HEIGHT_RATIO), int(137 * constants.HEIGHT_RATIO), color=arcade.color.BLACK)
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         if _x in range(int(354 * constants.WIDTH_RATIO), int(451 * constants.WIDTH_RATIO)) and _y in range(int(190 * constants.HEIGHT_RATIO), int(241 * constants.HEIGHT_RATIO)):

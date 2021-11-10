@@ -7,6 +7,9 @@ SCREEN_TITLE = "Move with a Sprite Animation Example"
 WIDTH_RATIO = SCREEN_WIDTH / 800
 HEIGHT_RATIO = SCREEN_HEIGHT / 600
 
+
+# CHARACTER_SCALING = 2.2
+
 # COIN_SCALE = 0.5
 # COIN_COUNT = 50
 CHARACTER_SCALING = .9
@@ -28,8 +31,6 @@ PATH = os.path.dirname(os.path.abspath(__file__))
 
 # Asset Pathing
 PLAYER_SPRITE = os.path.join(PATH, '..', 'assets','kenney_assets', 'Characters', 'character_000') # Trim off the last digit and .png 
-# WALL_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0009.png')
-# WALL_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0104.png')
 WALL_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0006.png')
 BACKGROUND_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0122.png')
 MOVING_WALL_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0026.png')

@@ -40,8 +40,7 @@ class PlayerCharacter(MovingSprite):
         # Images from Kenney.nl's Asset Pack 3
         main_path = constants.PLAYER_SPRITE
 
-        # Load textures for idle standing
-        #self.idle_texture_pair = load_texture_pair(f"{main_path}_idle.png")
+        
         # Player Select
         x = 6
 
@@ -74,9 +73,6 @@ class PlayerCharacter(MovingSprite):
         frame = self.cur_texture // constants.UPDATES_PER_FRAME
         direction = self.character_face_direction
         self.texture = self.walk_textures[frame][direction]
-
-    # def set_direction(self, direction):
-    #     self.direction = (direction[0] * -1, direction[1] * -1)
     
     def set_past_coords(self, past_x, past_y):
         self.past_x = past_x
@@ -85,10 +81,6 @@ class PlayerCharacter(MovingSprite):
     def set_past_direction(self, direction):
         self.past_direction = direction
 
-    # def wall_collision(self):
-    #     self.set_move_collision(self.past_x, self.past_y)
-
-     
 
     def update(self):
         """The player's update class. Is run every game tick."""
