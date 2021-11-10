@@ -7,7 +7,13 @@ SCREEN_TITLE = "Move with a Sprite Animation Example"
 WIDTH_RATIO = SCREEN_WIDTH / 800
 HEIGHT_RATIO = SCREEN_HEIGHT / 600
 
+
 CHARACTER_SCALING = 2.2
+
+# COIN_SCALE = 0.5
+# COIN_COUNT = 50
+CHARACTER_SCALING = 1
+
 SPRITE_SCALING = 1
 
 # How fast to move, and how fast to run the animation
@@ -31,6 +37,7 @@ BACKGROUND_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles',
 MOVING_WALL_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0026.png')
 FLAG_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0112.png')
 DOOR_SPRITE = os.path.join(PATH, '..', 'assets', 'images', 'tile_0150.png')
+GRASS_SPRITE = os.path.join(PATH, '..', 'assets', 'images', 'grass5.png')
 KEY_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0027.png')
 LOCK_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0028.png')
 BUTTON_SPRITE = os.path.join(PATH, '..', 'assets', 'images', 'button.png')
