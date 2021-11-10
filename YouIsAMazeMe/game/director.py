@@ -38,6 +38,7 @@ class MainWindow(arcade.View):
         self.sprites["boxes"] = None
         self.sprites["wall_list"] = None
         self.sprites["door"] = None
+        self.sprites["grass"] = None
         # Set up the player
         self.score = 0
         self.player = None
@@ -52,8 +53,13 @@ class MainWindow(arcade.View):
         
         # self.commands = Commands()
         # Set up the player
+        # for x in range(0, constants.SCREEN_WIDTH + constants.TILE_SIZE, constants.TILE_SIZE):
+        #     for y in range(0, constants.SCREEN_HEIGHT + constants.TILE_SIZE, constants.TILE_SIZE):
+        #         grass = ImmovableSprite(x, y, constants.GRASS_SPRITE)
+        #         self.sprites["grass"].append(grass)
         loader = LevelLoader(self.sprites)
         loader.load_level()
+        
 
         
         #self.score = 0
