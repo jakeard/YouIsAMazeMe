@@ -138,10 +138,10 @@ class HandleCollisions():
                                 # did the player push the box, or did the enemy run into the box?
                                 collision.target_pos = collision.initial_pos
                                 if enemy.is_moving:
-                                    collision.set_move(enemy.direction)
+                                    collision.direction = (enemy.direction)
                                 else:
                                     # If the enemy didn't move into it, make it reverse direction instead.
-                                    collision.set_move((collision.direction[0]*-1, collision.direction[1]*-1))
+                                    collision.direction = ((collision.direction[0]*-1, collision.direction[1]*-1))
                                 collision.fixing = True
                     enemy.fixing = True
                     direction = (enemy.direction[0] * -1, enemy.direction[1] * -1)

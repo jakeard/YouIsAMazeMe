@@ -34,3 +34,8 @@ class Box(MovingSprite):
     
     def get_type(self):
         return self.type
+
+    def set_move(self, direction):
+        super().set_move(direction)
+        print(f"Box initial pos: {self.initial_pos}")
+        print(f"Box target pos: {self.target_pos}")
