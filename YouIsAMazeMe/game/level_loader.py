@@ -38,10 +38,10 @@ class LevelLoader():
     def _load_tile(self, sprite, x, y):
         #print(f"Sprite: {sprite} ; location: {x}, {y}")
         # if sprite:
-        #     # grass
-        #     grass = ImmovableSprite(x, y, constants.GRASS_SPRITE)
-        #     print(x, y)
-        #     self.sprites["grass"].append(grass)
+            # # grass
+            # grass = ImmovableSprite(x, y, constants.GRASS_SPRITE)
+            # print(x, y)
+            # self.sprites["grass"].append(grass)
 
         if sprite == "w":
             # add wall at specified coordinates
