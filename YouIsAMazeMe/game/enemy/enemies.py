@@ -115,10 +115,44 @@ class EnemyBasic(MovingSprite):
 class EnemyMover(EnemyBasic):
 
     def __init__(self,x,y):
-        super().__init__(self, x,y)
+        super().__init__(x,y)
 
         self.can_push = True
+        self.update_frames = 175
+
+        main_path = constants.PLAYER_SPRITE
+
+        # Load textures for idle standing
+        #self.idle_texture_pair = load_texture_pair(f"{main_path}_idle.png")
+        # Player Select
+        x = 2
+
+        self.idle_texture_pair = load_texture_pair(f"{main_path}{x}.png")
+
+        # Load textures for walking
+        self.walk_textures = []
+        for i in range((0+x),(2+x)):
+            texture = load_texture_pair(f"{main_path}{i}.png")
+            self.walk_textures.append(texture)
     
 
 class EnemyAttacker(EnemyBasic):
-    pass
+    def __init__(self,x,y):
+        super().__init__(x,y)
+
+        self.can_push = True
+
+        main_path = constants.PLAYER_SPRITE
+
+        # Load textures for idle standing
+        #self.idle_texture_pair = load_texture_pair(f"{main_path}_idle.png")
+        # Player Select
+        x = 4
+
+        self.idle_texture_pair = load_texture_pair(f"{main_path}{x}.png")
+
+        # Load textures for walking
+        self.walk_textures = []
+        for i in range((0+x),(2+x)):
+            texture = load_texture_pair(f"{main_path}{i}.png")
+            self.walk_textures.append(texture)
