@@ -38,7 +38,7 @@ class PlayerCharacter(MovingSprite):
         # --- Load Textures ---
 
         # Images from Kenney.nl's Asset Pack 3
-        main_path = constants.PLAYER_SPRITE
+        main_path = constants.NEW_PLAYER_SPRITE
 
         
         # Player Select

@@ -83,7 +83,7 @@ class MainWindow(arcade.View):
 
         # Put the text on the screen.
         # output = f"Score: {self.score}"
-        arcade.draw_text("R - Restart", 20, 20, arcade.color.RUST, 14)
+        arcade.draw_text("R - Restart", constants.TILE_SIZE/2, constants.SCREEN_HEIGHT - constants.TILE_SIZE/3, arcade.color.WHITE, 16)
 
     def on_key_press(self, key, modifiers):
         """
