@@ -1,12 +1,14 @@
 import arcade
 from game import constants
-# import game.director
+import game.enemy.enemies as enemies
+# from game.director import on_update
 
 class Commands():
     def __init__(self, sprites):
         self.file = 'YouIsAMazeMe/game/run.py'
         self.sprites = sprites
         self.door = sprites['door'][0]
+        self.enemies = sprites['enemies']
 
     def execute(self, sprites):
         print("Executing commands!")
@@ -47,3 +49,14 @@ class Commands():
                     door = self.door
                     door.center_x = constants.TILE_SIZE + constants.SCREEN_WIDTH
                     door.center_y = constants.TILE_SIZE + constants.SCREEN_HEIGHT
+                if cmds == ['del(', 'bugs', ")"]:
+                    print("Delete all bugs.")
+                    for enemy in self.enemies:
+                        enemy.center_x = constants.TILE_SIZE + constants.SCREEN_WIDTH
+                        enemy.center_y = constants.TILE_SIZE + constants.SCREEN_HEIGHT
+                if cmds == ['print(', 'bugs', ")"]:
+                    print("Print a bugs.")
+                    x = constants.TILE_SIZE
+                    y = constants.TILE_SIZE
+                    self.sprites['enemies'][0].center_x = x
+                    self.sprites['enemies'][0].center_y = y

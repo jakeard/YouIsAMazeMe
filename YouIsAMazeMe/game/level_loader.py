@@ -84,6 +84,11 @@ class LevelLoader():
             box = Box(x, y, 'door')
             self.sprites["boxes"].append(box)
         
+        elif sprite == "bugs":
+            # box
+            box = Box(x, y, 'bugs')
+            self.sprites["boxes"].append(box)
+        
         elif sprite == ")":
             # box
             box = Box(x, y, ')')
