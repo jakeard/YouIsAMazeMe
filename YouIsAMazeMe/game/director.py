@@ -119,6 +119,7 @@ class MainWindow(arcade.View):
 
     def on_update(self, delta_time):
         """ Movement and game logic """
+        delta_time += 1
         for key in self.sprites:
             # Runs each sprite's update() method.
             self.sprites[key].update()
