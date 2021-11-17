@@ -125,7 +125,6 @@ class MainWindow(arcade.View):
             self.sprites[key].update()
             # Runs each sprite's update_animation() method.
             self.sprites[key].update_animation()
-
         self._cue_action("update")
         if not self.won is None:
             if self.won:
