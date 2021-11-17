@@ -1,7 +1,7 @@
 import arcade
 import os
 import game.start_view
-from game.director import MainWindow
+import game.director
 from game import constants
 
 class LevelSelector(arcade.View):
@@ -9,7 +9,6 @@ class LevelSelector(arcade.View):
         super().__init__()
         self.press_ranges = []
         self.num_files = len([f for f in os.listdir(os.path.join(os.path.dirname(os.path.abspath(__file__)),'../', 'levels')) if f not in {'todo.txt', 'level_00.csv'}])
-        print(self.num_files)
 
     def on_draw(self):
         arcade.start_render()
@@ -40,7 +39,7 @@ class LevelSelector(arcade.View):
         else:
             for i in self.press_ranges:
                 if _x in range(i[0], i[1]) and _y in range(i[3], i[2]):
-                    view = MainWindow(i[4])
+                    view = game.director.MainWindow(i[4])
                     view.setup()
                     self.window.show_view(view)
                     break
