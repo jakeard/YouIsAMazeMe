@@ -1,4 +1,5 @@
 import os
+import arcade
 
 SCREEN_WIDTH = 1216 # Was originally 800
 SCREEN_HEIGHT = 768 # Was originally 600
@@ -28,6 +29,12 @@ LEFT_FACING = 0
 TILE_SIZE = 64
 
 PATH = os.path.dirname(os.path.abspath(__file__))
+
+#Sounds
+PIXEL = os.path.join(PATH, '..', 'assets', 'sounds', 'pixel_polka.mp3')
+AUTUMN = os.path.join(PATH, '..', 'assets', 'sounds', 'autumn_day.mp3')
+autumn_sound = arcade.Sound(AUTUMN, streaming=True)
+pixel_sound = arcade.Sound(PIXEL, streaming=True)
 
 # Asset Pathing
 NEW_PLAYER_SPRITE = os.path.join(PATH, '..', 'assets', 'images', 'character_000') # Trim off the last digit and .png 
