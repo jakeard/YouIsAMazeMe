@@ -18,13 +18,13 @@ class EnemyBasic(MovingSprite):
         super().__init__(x, y)
         # How does this interract with the character?
         self.can_damage = False
-        self.can_push = True
+        self.can_push = False
         self.can_block = False
         
         self.fixing = False
 
         self.idle_counter = 0
-        self.update_frames = 300 # runs approx. 60 frames per second, so this is about 5 seconds.
+        self.update_frames = random.randint(200,275) # runs approx. 60 frames per second, choose a random time interval to move.
 
         self.center_x = x
         self.center_y = y
@@ -113,7 +113,46 @@ class EnemyBasic(MovingSprite):
     
 
 class EnemyMover(EnemyBasic):
-    pass
+
+    def __init__(self,x,y):
+        super().__init__(x,y)
+
+        self.can_push = True
+        self.update_frames = random.randint(150,200)
+
+        main_path = constants.PLAYER_SPRITE
+
+        # Load textures for idle standing
+        #self.idle_texture_pair = load_texture_pair(f"{main_path}_idle.png")
+        # Player Select
+        x = 2
+
+        self.idle_texture_pair = load_texture_pair(f"{main_path}{x}.png")
+
+        # Load textures for walking
+        self.walk_textures = []
+        for i in range((0+x),(2+x)):
+            texture = load_texture_pair(f"{main_path}{i}.png")
+            self.walk_textures.append(texture)
+    
 
 class EnemyAttacker(EnemyBasic):
-    pass
+    def __init__(self,x,y):
+        super().__init__(x,y)
+
+        self.can_push = True
+
+        main_path = constants.PLAYER_SPRITE
+
+        # Load textures for idle standing
+        #self.idle_texture_pair = load_texture_pair(f"{main_path}_idle.png")
+        # Player Select
+        x = 4
+
+        self.idle_texture_pair = load_texture_pair(f"{main_path}{x}.png")
+
+        # Load textures for walking
+        self.walk_textures = []
+        for i in range((0+x),(2+x)):
+            texture = load_texture_pair(f"{main_path}{i}.png")
+            self.walk_textures.append(texture)
