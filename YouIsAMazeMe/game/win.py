@@ -5,9 +5,8 @@ import game.director
 import game.level_selector
 
 class Win(arcade.View):
-    def __init__(self, level):
+    def __init__(self):
         super().__init__()
-        self.level = level
     
     def on_show(self):
         arcade.set_viewport(0, constants.SCREEN_WIDTH, 0, constants.SCREEN_HEIGHT)
@@ -22,7 +21,7 @@ class Win(arcade.View):
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         if _x in range(int(272 * constants.WIDTH_RATIO), int(531 * constants.WIDTH_RATIO)) and _y in range(int(94 * constants.HEIGHT_RATIO), int(145 * constants.HEIGHT_RATIO)):
-            view = game.director.MainWindow(self.level + 1)
+            view = game.director.MainWindow()
             view.setup()
             self.window.show_view(view)
         elif _x in range(int(272 * constants.WIDTH_RATIO), int(531 * constants.WIDTH_RATIO)) and _y in range(int(30 * constants.HEIGHT_RATIO), int(80 * constants.HEIGHT_RATIO)):
