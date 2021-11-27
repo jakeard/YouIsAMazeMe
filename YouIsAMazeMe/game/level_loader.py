@@ -114,5 +114,9 @@ class LevelLoader():
             enemy_mover = enemies.EnemyMover(x,y)
             self.sprites["enemies"].append(enemy_mover)
 
+        elif sprite == "ea":
+            enemy_attacker = enemies.EnemyAttacker(x,y)
+            self.sprites["enemies"].append(enemy_attacker)
+
     def next_level(self):
         self.current_level += 1
