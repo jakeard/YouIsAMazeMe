@@ -41,6 +41,8 @@ class HandleCollisions():
         for wall in self.walls:
             if not self.fixing:
                 if player.collides_with_sprite(wall):
+                    
+                    constants.boing_sound.play(volume=.85, pan=1, loop = False)
                     self.fixing = True
                     direction = (player.direction[0] * -1, player.direction[1] * -1)
                     player.direction = direction
@@ -142,4 +144,5 @@ class HandleCollisions():
         player = sprites['player'][0]
         door = sprites['door'][0]
         if player.collides_with_sprite(door):
+            constants.win_sound.play(volume=.78, pan=1, loop = False)
             return True
