@@ -47,6 +47,10 @@ START_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'start_screen.png')
 WIN_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'win.png')
 LOSE_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'you_lose.png') 
 CODE_BLOCKS = os.path.join(PATH, '..', 'assets', 'images') # Trim off the type and .png 
+ENEMY_BASIC_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Enemy_sprites', 'snail')
+ENEMY_MOVER_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Enemy_sprites', 'fly')
+ENEMY_ATTACKER_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Enemy_sprites', 'spider')
+ENEMY_OBSTACLE_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Enemy_sprites', 'slime')
 
 
 

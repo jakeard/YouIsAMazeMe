@@ -8,11 +8,13 @@ import game.enemy.enemies as enemies
 
 class LevelLoader():
 
-    def __init__(self, sprite_dict, level):
+    def __init__(self, sprite_dict=None, curr_level=1):
 
-        self.current_level = level
+        self.current_level = curr_level
         self.level_dir = "YouIsAMazeMe/levels"
-        self.sprites = sprite_dict
+        self.sprites = {}
+        if sprite_dict is not None:
+            self.sprites = sprite_dict
         
     
     def load_level(self):
@@ -107,7 +109,14 @@ class LevelLoader():
         elif sprite == "eb":
             enemy_basic = enemies.EnemyBasic(x,y)
             self.sprites["enemies"].append(enemy_basic)
+        
+        elif sprite == "em":
+            enemy_mover = enemies.EnemyMover(x,y)
+            self.sprites["enemies"].append(enemy_mover)
+
+        elif sprite == "ea":
+            enemy_attacker = enemies.EnemyAttacker(x,y)
+            self.sprites["enemies"].append(enemy_attacker)
 
     def next_level(self):
         self.current_level += 1
-        self.load_level()
