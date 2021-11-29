@@ -8,9 +8,11 @@ import game.enemy.enemies as enemies
 
 class LevelLoader():
 
-    def __init__(self, sprite_dict=None, curr_level=1):
-
-        self.current_level = curr_level
+    def __init__(self, choose_level, sprite_dict=None, curr_level=1):
+        if choose_level is None:
+            self.current_level = curr_level
+        else:
+            self.current_level = choose_level
         self.level_dir = "YouIsAMazeMe/levels"
         self.sprites = {}
         if sprite_dict is not None:

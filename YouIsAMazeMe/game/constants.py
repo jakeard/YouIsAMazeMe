@@ -51,6 +51,7 @@ ENEMY_BASIC_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Enemy_
 ENEMY_MOVER_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Enemy_sprites', 'fly')
 ENEMY_ATTACKER_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Enemy_sprites', 'spider')
 ENEMY_OBSTACLE_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Enemy_sprites', 'slime')
+INSTRUCT = os.path.join(PATH, '..', 'assets', 'images', 'instructions.png')
 
 
 
