@@ -7,4 +7,5 @@ if __name__ == "__main__":
     window = arcade.Window(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
     start_view = Start_View()
     window.show_view(start_view)
+    # arcade.stop_sound(self.sound)
     arcade.run()

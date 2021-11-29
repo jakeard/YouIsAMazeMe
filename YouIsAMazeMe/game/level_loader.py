@@ -5,10 +5,11 @@ from game.button import Buttons
 from game.player.player import PlayerCharacter
 from game.immovableSprite import ImmovableSprite
 import game.enemy.enemies as enemies
+import arcade
 
 class LevelLoader():
 
-    def __init__(self, choose_level, sprite_dict=None, curr_level=1):
+def __init__(self, choose_level, sprite_dict=None, curr_level=1):
         if choose_level is None:
             self.current_level = curr_level
         else:

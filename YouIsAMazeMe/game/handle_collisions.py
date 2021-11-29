@@ -2,6 +2,7 @@ import arcade
 from game import constants
 from game.commands import Commands
 from game.boxes import Box
+import random
 # from game.action import Action
 # from game.player.player import PlayerCharacter
 
@@ -41,6 +42,11 @@ class HandleCollisions():
         for wall in self.walls:
             if not self.fixing:
                 if player.collides_with_sprite(wall):
+                    num = random.randint(1,2)
+                    if num == 1:
+                        constants.boing_sound.play(volume=1, pan=1, loop = False)
+                    elif num == 2:
+                        constants.bonk_sound.play(volume=1, pan=1, loop = False)
                     self.fixing = True
                     direction = (player.direction[0] * -1, player.direction[1] * -1)
                     player.direction = direction
@@ -53,6 +59,11 @@ class HandleCollisions():
                 if player.collides_with_sprite(box):
                     # Check if the box is currently being fixed before it tries to be moved!
                     if not box.fixing:
+                        num = random.randint(1,2)
+                        if num == 1:
+                            constants.grunt_sound.play(volume=1, pan=1, loop = False)
+                        elif num == 2:
+                            constants.ahh_sound.play(volume=1, pan=1, loop = False)
                         # Tell the box to move!
                         box.set_move(player.direction)
                     self.fixing = True
@@ -80,6 +91,7 @@ class HandleCollisions():
         for button in self.button:
             if player.collides_with_sprite(button):
                 if button.pressed == False:
+                    constants.button_sound.play(volume=1, pan=1, loop = False)
                     button.pressed = True
                     button.is_pressed(button.pressed)
                     self.commands.execute(self.sprites)
@@ -103,8 +115,17 @@ class HandleCollisions():
                     # Send the enemy away!
                     enemy.set_move(player.direction)
                     if enemy.can_damage:
+                        # constants.died_sound.play(volume=1, pan=1, loop = False)
                         # TODO: Add code here, telling the player/director/whoever that the player took damage
                         pass
+                    else:
+                        num = random.randint(1,3)
+                        if num == 1:
+                            constants.owie_sound.play(volume=1, pan=1, loop = False)
+                        if num == 2:
+                            constants.ohno_sound.play(volume=1, pan=1, loop = False)
+                        if num == 3:
+                            constants.ouch_sound.play(volume=1, pan=1, loop = False)
                 
                 self.fixing = True
                 direction = (player.direction[0] * -1, player.direction[1] * -1)
@@ -142,4 +163,11 @@ class HandleCollisions():
         player = sprites['player'][0]
         door = sprites['door'][0]
         if player.collides_with_sprite(door):
+            num = random.randint(1,3)
+            if num == 1:
+                constants.win_sound.play(volume=1, pan=1, loop = False)
+            elif num == 2:
+                constants.yay_sound.play(volume=1, pan=1, loop = False)
+            elif num == 3:
+                constants.hooray_soundw.play(volume=1, pan=1, loop = False)
             return True
