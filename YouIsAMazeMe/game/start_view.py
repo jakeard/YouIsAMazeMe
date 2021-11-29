@@ -8,7 +8,7 @@ class Start_View(arcade.View):
         super().__init__()
     
     def on_show(self):
-        constants.pixel_sound.play(volume=.65, pan=1, loop = True)
+        constants.pixel_sound.play(volume=.3, pan=1, loop = True)
         self.texture = arcade.load_texture(constants.START_SCREEN)
 
     def on_draw(self):
