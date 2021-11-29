@@ -5,11 +5,12 @@ from game.button import Buttons
 from game.player.player import PlayerCharacter
 from game.immovableSprite import ImmovableSprite
 import game.enemy.enemies as enemies
+import arcade
 
 class LevelLoader():
 
     def __init__(self, sprite_dict=None, curr_level=1):
-
+        # arcade.stop_sound(constants.autumn_sound)
         self.current_level = curr_level
         self.level_dir = "YouIsAMazeMe/levels"
         self.sprites = {}
