@@ -8,7 +8,7 @@ class LevelSelector(arcade.View):
     def __init__(self):
         super().__init__()
         self.press_ranges = []
-        self.num_files = len([f for f in os.listdir(os.path.join(os.path.dirname(os.path.abspath(__file__)),'../', 'levels')) if f not in {'todo.txt', 'level_00.csv'}])
+        self.num_files = len([f for f in os.listdir(os.path.join(os.path.dirname(os.path.abspath(__file__)),'../', 'levels')) if f not in {'todo.txt', 'level_00.csv', 'curr_data.json'}])
 
     def on_draw(self):
         arcade.start_render()
