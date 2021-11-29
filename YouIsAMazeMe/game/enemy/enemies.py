@@ -20,6 +20,8 @@ class EnemyBasic(MovingSprite):
         self.can_damage = False
         self.can_push = False
         self.can_block = False
+        self.flying = False
+        self.frame_freq = 16
         
         self.fixing = False
 
@@ -43,22 +45,19 @@ class EnemyBasic(MovingSprite):
         # side-to-side. Box is centered at sprite center, (0, 0)
         self.points = [[-22, -64], [22, -64], [22, 28], [-22, 28]]
 
+        self.main_path = constants.ENEMY_BASIC_SPRITE
+        self.find_textures()
+    
+    def find_textures(self):
         # --- Load Textures ---
-
-        # Images from Kenney.nl's Asset Pack 3
-        main_path = constants.PLAYER_SPRITE
+        main_path = self.main_path
 
         # Load textures for idle standing
-        #self.idle_texture_pair = load_texture_pair(f"{main_path}_idle.png")
-        # Player Select
-        x = 4
-
-        self.idle_texture_pair = load_texture_pair(f"{main_path}{x}.png")
-
+        self.idle_texture_pair = load_texture_pair(f"{main_path}_idle.png")
         # Load textures for walking
         self.walk_textures = []
-        for i in range((0+x),(2+x)):
-            texture = load_texture_pair(f"{main_path}{i}.png")
+        for i in range(2):
+            texture = load_texture_pair(f"{main_path}_move{i+1}.png")
             self.walk_textures.append(texture)
 
     def update_animation(self, delta_time: float = 1/60):
@@ -70,15 +69,17 @@ class EnemyBasic(MovingSprite):
             self.character_face_direction = constants.RIGHT_FACING
 
         # Idle animation
-        if self.change_x == 0 and self.change_y == 0:
-            self.texture = self.idle_texture_pair[self.character_face_direction]
-            return
+        if not self.flying:
+            if self.change_x == 0 and self.change_y == 0:
+                self.texture = self.idle_texture_pair[self.character_face_direction]
+                return
 
         # Walking animation
         self.cur_texture += 1
-        if self.cur_texture > 1 * constants.UPDATES_PER_FRAME:
+        frame = self.cur_texture // self.frame_freq
+        if frame > len(self.walk_textures)-1:
+            frame = 0
             self.cur_texture = 0
-        frame = self.cur_texture // constants.UPDATES_PER_FRAME
         direction = self.character_face_direction
         self.texture = self.walk_textures[frame][direction]
     
@@ -118,22 +119,12 @@ class EnemyMover(EnemyBasic):
         super().__init__(x,y)
 
         self.can_push = True
+        self.flying = True
+        self.frame_freq = 4
         self.update_frames = random.randint(150,200)
 
-        main_path = constants.PLAYER_SPRITE
-
-        # Load textures for idle standing
-        #self.idle_texture_pair = load_texture_pair(f"{main_path}_idle.png")
-        # Player Select
-        x = 2
-
-        self.idle_texture_pair = load_texture_pair(f"{main_path}{x}.png")
-
-        # Load textures for walking
-        self.walk_textures = []
-        for i in range((0+x),(2+x)):
-            texture = load_texture_pair(f"{main_path}{i}.png")
-            self.walk_textures.append(texture)
+        self.main_path = constants.ENEMY_MOVER_SPRITE
+        self.find_textures()
     
 
 class EnemyAttacker(EnemyBasic):
@@ -141,18 +132,9 @@ class EnemyAttacker(EnemyBasic):
         super().__init__(x,y)
 
         self.can_push = True
+        self.can_damage = True
+        self.frame_freq = 2
 
-        main_path = constants.PLAYER_SPRITE
-
-        # Load textures for idle standing
-        #self.idle_texture_pair = load_texture_pair(f"{main_path}_idle.png")
-        # Player Select
-        x = 4
-
-        self.idle_texture_pair = load_texture_pair(f"{main_path}{x}.png")
-
-        # Load textures for walking
-        self.walk_textures = []
-        for i in range((0+x),(2+x)):
-            texture = load_texture_pair(f"{main_path}{i}.png")
-            self.walk_textures.append(texture)
+        self.update_frames = random.randint(100,175)
+        self.main_path = constants.ENEMY_ATTACKER_SPRITE
+        self.find_textures()
