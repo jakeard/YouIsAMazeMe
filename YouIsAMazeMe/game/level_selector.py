@@ -39,7 +39,7 @@ class LevelSelector(arcade.View):
         else:
             for i in self.press_ranges:
                 if _x in range(i[0], i[1]) and _y in range(i[3], i[2]):
-                    view = game.director.MainWindow(i[4])
+                    view = game.director.MainWindow(i[4] - 1)
                     view.setup()
                     self.window.show_view(view)
                     break

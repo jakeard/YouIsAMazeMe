@@ -93,7 +93,7 @@ class EnemyBasic(MovingSprite):
     def update(self):
         """The player's update class. Is run every game tick."""
         super().update()
-        self.idle_counter+=1
+        # self.idle_counter+=1
         self.determine_move()
         if self.fixing:
             if not self.is_moving:
