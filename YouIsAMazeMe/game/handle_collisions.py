@@ -110,6 +110,7 @@ class HandleCollisions():
             if enemy.can_damage:
               # This is where the player dies
                 if player.collides_with_sprite(enemy):
+                    constants.died_sound.play(volume=1, pan=1, loop = False)
                     self.player.hide()
             # For when the player runs into the enemy
             if player.collides_with_sprite(enemy) and not self.fixing:
