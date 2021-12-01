@@ -48,10 +48,10 @@ class HandleCollisions():
     
     def _handle_walls_collision(self):
         player = self.player
-        for wall in self.walls:
-            if not player.fixing:
-                if player.collides_with_sprite(wall):
-                    player.bounce()
+        if not player.fixing:
+            for wall in self.walls:
+                    if player.collides_with_sprite(wall):
+                        player.bounce()
 
     def _handle_box_collision(self):
         player = self.player
@@ -120,7 +120,7 @@ class HandleCollisions():
                     constants.ouch_sound.play(volume=1, pan=1, loop = False)
                     
                 if player.is_moving:
-                    print("bouncing")
+                    #print("bouncing")
                     # Is the enemy standing still, and can it be pushed?
                     if not enemy.is_moving and not enemy.fixing and not enemy.can_block:
                         # Send the enemy away!
@@ -128,7 +128,7 @@ class HandleCollisions():
                     
                     player.bounce()
                 else:
-                    print("shoving")
+                    #print("shoving")
                     # For when the enemy runs into the player
                     player.fixing = True
                     player.set_move(enemy.direction)
