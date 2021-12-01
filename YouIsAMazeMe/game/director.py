@@ -158,7 +158,6 @@ class MainWindow(arcade.View):
         try: 
             # Is there already a file? If so, proceed.
             with open(self._loader_path, 'r') as rpath:
-                pass
                 # Is there existing save data? If so, load it.
                 self.save_data = json.load(rpath)
                 self.loader = LevelLoader(self.sprites, self.save_data['curr_lvl'])
