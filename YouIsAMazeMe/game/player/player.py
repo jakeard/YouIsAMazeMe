@@ -86,3 +86,5 @@ class PlayerCharacter(MovingSprite):
         """The player's update class. Is run every game tick."""
         super().update()
 
+    def set_move(self, direction):
+        super().set_move(direction)

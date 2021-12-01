@@ -9,6 +9,7 @@ class MovingSprite(arcade.Sprite):
         super().__init__()
 
         # Movement constants
+        self.is_disabled = False
         self.center_x = x
         self.center_y = y
         self.is_moving = False
@@ -16,13 +17,15 @@ class MovingSprite(arcade.Sprite):
         self.current_pos = (self.center_x, self.center_y)
         self.target_pos = self.current_pos
         self.initial_pos = self.current_pos
+        self.disabled_pos = None
 
     def set_move(self, direction):
-        self.initial_pos = self.current_pos
-        self.direction = direction
-        self.is_moving = True
-        self.target_pos = ((self.center_x+(direction[0]*constants.TILE_SIZE)), (self.center_y+(direction[1]*constants.TILE_SIZE)))
-        print(f"Current pos: {self.current_pos}, target pos: {self.target_pos}")
+        if not self.is_disabled:
+            self.initial_pos = self.current_pos
+            self.direction = direction
+            self.is_moving = True
+            self.target_pos = ((self.center_x+(direction[0]*constants.TILE_SIZE)), (self.center_y+(direction[1]*constants.TILE_SIZE)))
+            #print(f"Current pos: {self.current_pos}, target pos: {self.target_pos}")
     
     def move(self):
         """Method that gets called during update, used to move."""
@@ -42,11 +45,48 @@ class MovingSprite(arcade.Sprite):
 
     def update(self):
         """The player's update class. Is run every game tick."""
-        super().update()
-        # Make sure that the current position is up to date
-        self.current_pos = (self.center_x, self.center_y)
+        if not self.is_disabled:
+            super().update()
+            # Make sure that the current position is up to date
+            self.current_pos = (self.center_x, self.center_y)
 
-        # Only run the move function if set_move has activated movement
-        if self.is_moving:
-            self.move()
+            # Only run the move function if set_move has activated movement
+            if self.is_moving:
+                self.move()
+            if not self.is_moving:
+                self._round_pos()
         
+    def hide(self):
+        """Teleport them off screen, and disable their movement."""
+        if not self.is_disabled:
+            self.center_x,self.center_y = self.target_pos
+            self.disabled_pos = self.target_pos
+            self.change_x = 0
+            self.change_y = 0
+            self.is_disabled = True
+            self.is_moving = False
+            self.direction = (0,0)
+            self.center_x,self.center_y = (-64,-64)
+    
+    def unhide(self):
+        self.center_x = 275
+        self.center_y = 389
+        if self.is_disabled:
+            self.is_disabled = False
+            self.center_x,self.center_y = self.disabled_pos
+            self.disabled_pos = None
+
+    def _round_pos(self):
+        """Helper function, sets the player's location to the closest tile center. Called when the player is not moving."""
+        if not self.center_x%64==0:
+            x_offset = round(self.center_x/64)
+            self.center_x = x_offset*64
+        if not self.center_y%64==0:
+            y_offset = round(self.center_y/64)
+            self.center_y = y_offset*64
+
+    def collides_with_sprite(self, other) -> bool:
+        if not self.is_disabled:
+            return super().collides_with_sprite(other)
+        else:
+            return False
