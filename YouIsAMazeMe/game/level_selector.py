@@ -26,7 +26,7 @@ class LevelSelector(arcade.View):
                     arcade.draw_text(f'0{level}', i, int(y), arcade.color.WHITE, font_size=35, anchor_x='center')
                 else:
                     arcade.draw_text(f'{level}', i, int(y), arcade.color.WHITE, font_size=35, anchor_x='center')
-                self.press_ranges.append((int(i - 25 * constants.WIDTH_RATIO), int(i + 25 * constants.WIDTH_RATIO), int(y + 35 * constants.HEIGHT_RATIO), int(y - 1 * constants.HEIGHT_RATIO), level))
+                self.press_ranges.append((int(i - 25 * constants.WIDTH_RATIO), int(i + 25 * constants.WIDTH_RATIO), int(y + 35 * constants.HEIGHT_RATIO), int(y - 1 * constants.HEIGHT_RATIO), level + 1))
                 if level == self.num_files:
                     break
         # arcade.draw_lrtb_rectangle_outline(int(20 * constants.WIDTH_RATIO), int(100 * constants.WIDTH_RATIO), int(55 * constants.HEIGHT_RATIO), int(20 * constants.HEIGHT_RATIO), arcade.color.BLACK)
