@@ -1,4 +1,5 @@
 import arcade
+from arcade.sprite_list.spatial_hash import check_for_collision, check_for_collision_with_lists
 from game import constants
 from game.commands import Commands
 from game.boxes import Box
@@ -29,13 +30,29 @@ class HandleCollisions():
         self.enemies = sprites['enemies']
         self.commands = Commands(sprites)
         self.button = sprites["button"]
+        self.slimes = sprites["slimes"]
 
         self._handle_walls_collision()
         self._handle_box_collision()
         self._handle_box_environment_collision()
         self._handle_button_press()
         self._handle_enemy_collision()
+        self._handle_slimes_collision()
 
+    def _handle_slimes_collision(self):
+        for slime in self.slimes:
+            hit_list = arcade.check_for_collision_with_lists(slime, [self.sprites['player'], self.enemies, self.boxes])
+            for collision in hit_list:
+                if collision isinstance of Player
+                num = random.randint(1,2)
+                if num == 1:
+                    constants.boing_sound.play(volume=1, pan=1, loop = False)
+                elif num == 2:
+                    constants.bonk_sound.play(volume=1, pan=1, loop = False)
+                self.fixing = True
+                direction = (collision.direction[0] * -1, collision.direction[1] * -1)
+                collision.direction = direction
+                collision.target_pos = collision.initial_pos
     
     def _handle_walls_collision(self):
         player = self.player

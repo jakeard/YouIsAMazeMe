@@ -68,6 +68,12 @@ class LevelLoader():
             door = ImmovableSprite(x, y, constants.DOOR_SPRITE)
             print(x, y)
             self.sprites["door"].append(door)
+        
+        elif sprite == "s":
+            # door
+            slime = ImmovableSprite(x, y, constants.SLIME_SPRITE)
+            print(x, y)
+            self.sprites["slimes"].append(slime)
 
         elif sprite == "start":
             # box
@@ -92,6 +98,11 @@ class LevelLoader():
         elif sprite == "bugs":
             # box
             box = Box(x, y, 'bugs')
+            self.sprites["boxes"].append(box)
+
+        elif sprite == "slimes":
+            # box
+            box = Box(x, y, 'slimes')
             self.sprites["boxes"].append(box)
         
         elif sprite == ")":

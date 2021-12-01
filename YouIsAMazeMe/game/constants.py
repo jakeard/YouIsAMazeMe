@@ -68,6 +68,7 @@ BACKGROUND_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles',
 MOVING_WALL_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0026.png')
 FLAG_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0112.png')
 DOOR_SPRITE = os.path.join(PATH, '..', 'assets', 'images', 'tile_0150.png')
+SLIME_SPRITE = os.path.join(PATH, '..', 'assets', 'images', 'slimeBlock.png')
 GRASS_SPRITE = os.path.join(PATH, '..', 'assets', 'images', 'grass5.png')
 KEY_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0027.png')
 LOCK_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Tiles', 'tile_0028.png')
