@@ -9,6 +9,7 @@ class MovingSprite(arcade.Sprite):
         super().__init__()
 
         # Movement constants
+        self.fixing = False
         self.is_disabled = False
         self.center_x = x
         self.center_y = y
@@ -20,6 +21,7 @@ class MovingSprite(arcade.Sprite):
         self.disabled_pos = None
 
     def set_move(self, direction):
+
         if not self.is_disabled:
             self.initial_pos = self.current_pos
             self.direction = direction
@@ -45,16 +47,30 @@ class MovingSprite(arcade.Sprite):
 
     def update(self):
         """The player's update class. Is run every game tick."""
-        if not self.is_disabled:
-            super().update()
-            # Make sure that the current position is up to date
-            self.current_pos = (self.center_x, self.center_y)
 
-            # Only run the move function if set_move has activated movement
-            if self.is_moving:
-                self.move()
-            if not self.is_moving:
-                self._round_pos()
+        if not self.is_disabled:
+          super().update()
+
+          # Make sure that the current position is up to date
+          self.current_pos = (self.center_x, self.center_y)
+
+          # Only run the move function if set_move has activated movement
+          if self.is_moving:
+              self.move()
+          else: # enter this block if I'm not moving!
+              self._round_pos()
+              # if I'm still trying to "fix", then stop it
+              if self.fixing:
+                  self.fixing = False
+        
+    def bounce(self, direction=None):
+        """Causes the sprite to reverse direction. Reverses current direction by default."""
+        self.fixing = True
+        if direction is None:
+            direction = self.direction
+        
+        self.direction = (direction[0]*-1, direction[1]*-1)
+        self.target_pos = self.initial_pos
         
     def hide(self):
         """Teleport them off screen, and disable their movement."""

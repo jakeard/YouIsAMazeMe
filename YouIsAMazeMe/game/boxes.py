@@ -24,10 +24,6 @@ class Box(MovingSprite):
     def update(self):
         super().update()
 
-        if self.fixing:
-            if not self.is_moving:
-                self.fixing = False
-
     def set_size(self, size=(constants.TILE_SIZE-16)):
         self.height = size
         self.width = size

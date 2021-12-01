@@ -43,6 +43,7 @@ class MainWindow(arcade.View):
         self.sprites["door"] = None
         self.sprites["player"] = None
         self.sprites["enemies"] = None
+        self.sprites["slimes"] = None
 
         # Set up the player
         self.score = 0
