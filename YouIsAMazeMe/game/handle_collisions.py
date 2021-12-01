@@ -28,7 +28,7 @@ class HandleCollisions():
         self.enemies = sprites['enemies']
         self.commands = Commands(sprites)
         self.button = sprites["button"]
-
+    
         self._handle_walls_collision()
         self._handle_box_collision()
         self._handle_box_environment_collision()
@@ -88,13 +88,16 @@ class HandleCollisions():
                 button.is_pressed(self.pressed)
 
     def _handle_enemy_collision(self):
+        player = self.player
         for enemy in self.enemies:
             # enemy.can_push
             # enemy.can_block
             # enemy.can_damage
             # enemy.can_be_pushed
-            player = self.player
 
+            if enemy.can_damage:
+                if player.collides_with_sprite(enemy):
+                    self.player.hide()
             # For when the player runs into the enemy
             if player.collides_with_sprite(enemy) and not self.fixing:
 
@@ -102,9 +105,6 @@ class HandleCollisions():
                 if not enemy.is_moving and not enemy.fixing and not enemy.can_block:
                     # Send the enemy away!
                     enemy.set_move(player.direction)
-                    if enemy.can_damage:
-                        # TODO: Add code here, telling the player/director/whoever that the player took damage
-                        pass
                 
                 self.fixing = True
                 direction = (player.direction[0] * -1, player.direction[1] * -1)
@@ -139,7 +139,7 @@ class HandleCollisions():
                     enemy.target_pos = enemy.initial_pos
                     
     def handle_door_collision(self, sprites):
-        player = sprites['player'][0]
         door = sprites['door'][0]
+        player = self.player
         if player.collides_with_sprite(door):
             return True

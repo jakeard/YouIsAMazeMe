@@ -95,6 +95,7 @@ class MainWindow(arcade.View):
         # Only accept these inputs if the player is not moving
         if not player.is_moving:  # I'm moving! I don't want to be able to move again.
             player.set_past_coords(player.center_x, player.center_y)
+            direction = (0,0)
             if key == arcade.key.UP or key == arcade.key.W:
                 direction = (0,1)
             elif key == arcade.key.DOWN or key == arcade.key.S:
@@ -103,8 +104,7 @@ class MainWindow(arcade.View):
                 direction = (1,0)
             elif key == arcade.key.LEFT or key == arcade.key.A:
                 direction = (-1,0)
-            else:
-                direction = (0,0)
+
             player.set_past_direction(direction)
             self.handle_collisions.fixing = False
 
