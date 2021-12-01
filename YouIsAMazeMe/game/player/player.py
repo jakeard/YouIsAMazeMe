@@ -1,6 +1,7 @@
 import arcade
 import game.constants as constants
 from game.movingSprite import MovingSprite 
+import random
 
 def load_texture_pair(filename):
     """
@@ -86,3 +87,10 @@ class PlayerCharacter(MovingSprite):
         """The player's update class. Is run every game tick."""
         super().update()
 
+    def bounce(self):
+        super().bounce()
+        num = random.randint(1,2)
+        if num == 1:
+            constants.boing_sound.play(volume=1, pan=1, loop = False)
+        elif num == 2:
+            constants.bonk_sound.play(volume=1, pan=1, loop = False)

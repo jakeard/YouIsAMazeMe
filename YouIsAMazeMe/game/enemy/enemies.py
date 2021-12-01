@@ -95,9 +95,6 @@ class EnemyBasic(MovingSprite):
         super().update()
         self.idle_counter+=1
         self.determine_move()
-        if self.fixing:
-            if not self.is_moving:
-                self.fixing = False
 
     def determine_move(self, target=None):
         if not self.is_moving:

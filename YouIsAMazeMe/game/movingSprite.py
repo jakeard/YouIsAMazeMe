@@ -9,6 +9,7 @@ class MovingSprite(arcade.Sprite):
         super().__init__()
 
         # Movement constants
+        self.fixing = False
         self.center_x = x
         self.center_y = y
         self.is_moving = False
@@ -22,7 +23,7 @@ class MovingSprite(arcade.Sprite):
         self.direction = direction
         self.is_moving = True
         self.target_pos = ((self.center_x+(direction[0]*constants.TILE_SIZE)), (self.center_y+(direction[1]*constants.TILE_SIZE)))
-        print(f"Current pos: {self.current_pos}, target pos: {self.target_pos}")
+        #print(f"Current pos: {self.current_pos}, target pos: {self.target_pos}")
     
     def move(self):
         """Method that gets called during update, used to move."""
@@ -43,6 +44,10 @@ class MovingSprite(arcade.Sprite):
     def update(self):
         """The player's update class. Is run every game tick."""
         super().update()
+        if self.fixing:
+            if not self.is_moving:
+                self.fixing = False
+
         # Make sure that the current position is up to date
         self.current_pos = (self.center_x, self.center_y)
 
@@ -50,3 +55,12 @@ class MovingSprite(arcade.Sprite):
         if self.is_moving:
             self.move()
         
+    def bounce(self, direction=None):
+        """Causes the sprite to reverse direction. Reverses current direction by default."""
+        self.fixing = True
+        if direction is None:
+            direction = self.direction
+        
+        self.direction = (direction[0]*-1, direction[1]*-1)
+        self.target_pos = self.initial_pos
+
