@@ -8,7 +8,7 @@ class LevelSelector(arcade.View):
     def __init__(self):
         super().__init__()
         self.press_ranges = []
-        self.num_files = len([f for f in os.listdir(os.path.join(os.path.dirname(os.path.abspath(__file__)),'../', 'levels')) if f not in {'todo.txt', 'level_00.csv'}])
+        self.num_files = len([f for f in os.listdir(os.path.join(os.path.dirname(os.path.abspath(__file__)),'../', 'levels')) if f not in {'todo.txt', 'level_00.csv', 'curr_data.json'}])
 
     def on_draw(self):
         arcade.start_render()
@@ -26,7 +26,7 @@ class LevelSelector(arcade.View):
                     arcade.draw_text(f'0{level}', i, int(y), arcade.color.WHITE, font_size=35, anchor_x='center')
                 else:
                     arcade.draw_text(f'{level}', i, int(y), arcade.color.WHITE, font_size=35, anchor_x='center')
-                self.press_ranges.append((int(i - 25 * constants.WIDTH_RATIO), int(i + 25 * constants.WIDTH_RATIO), int(y + 35 * constants.HEIGHT_RATIO), int(y - 1 * constants.HEIGHT_RATIO), level))
+                self.press_ranges.append((int(i - 25 * constants.WIDTH_RATIO), int(i + 25 * constants.WIDTH_RATIO), int(y + 35 * constants.HEIGHT_RATIO), int(y - 1 * constants.HEIGHT_RATIO), level + 1))
                 if level == self.num_files:
                     break
         # arcade.draw_lrtb_rectangle_outline(int(20 * constants.WIDTH_RATIO), int(100 * constants.WIDTH_RATIO), int(55 * constants.HEIGHT_RATIO), int(20 * constants.HEIGHT_RATIO), arcade.color.BLACK)
@@ -39,7 +39,7 @@ class LevelSelector(arcade.View):
         else:
             for i in self.press_ranges:
                 if _x in range(i[0], i[1]) and _y in range(i[3], i[2]):
-                    view = game.director.MainWindow(i[4])
+                    view = game.director.MainWindow(i[4] - 1)
                     view.setup()
                     self.window.show_view(view)
                     break

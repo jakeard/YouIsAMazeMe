@@ -26,9 +26,13 @@ import json
 class MainWindow(arcade.View):
     """ Main application class. """
 
-    def __init__(self):
+    def __init__(self, level=None):
         """ Set up the game and initialize the variables. """
         super().__init__()
+        if level is not None:
+            self.level = level
+        else:
+            self.level = None
 
         # The sprites in this game window can be stored in a dictionary. That makes it easier to iterate through each rendered item.
         self.sprites = {}
@@ -61,6 +65,7 @@ class MainWindow(arcade.View):
             for y in range(0, constants.SCREEN_HEIGHT + constants.TILE_SIZE, constants.TILE_SIZE):
                 grass = ImmovableSprite(x, y, constants.GRASS_SPRITE)
                 self.sprites["grass"].append(grass)
+
         
         # Initialization of the save data.
         self.load_from_json()
@@ -78,7 +83,6 @@ class MainWindow(arcade.View):
 
         # This command has to happen before we start drawing
         arcade.start_render()
-
         # Iterates through every key in the sprite dict, and draws them.
         for key in self.sprites:
             self.sprites[key].draw()
@@ -160,7 +164,7 @@ class MainWindow(arcade.View):
             with open(self._loader_path, 'r') as rpath:
                 # Is there existing save data? If so, load it.
                 self.save_data = json.load(rpath)
-                self.loader = LevelLoader(self.sprites, self.save_data['curr_lvl'])
+                self.loader = LevelLoader(self.level, self.sprites, self.save_data['curr_lvl'])
 
         except:
             # If not, create a new one and load as normal.
