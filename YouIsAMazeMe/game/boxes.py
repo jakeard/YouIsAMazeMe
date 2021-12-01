@@ -3,15 +3,18 @@ from game.movingSprite import MovingSprite
 from game import constants
 
 class Box(MovingSprite):
-    def __init__(self, x, y, type):
+    def __init__(self, x, y, box_type=None):
         super().__init__(x, y)
 
 
         main_path = constants.CODE_BLOCKS
-        self.texture = arcade.load_texture(f"{main_path}/{type}.png")
+        if box_type is not None:
+            self.texture = arcade.load_texture(f"{main_path}/{box_type}.png")
+        else:
+            self.texture = arcade.load_texture(f"{main_path}/base.png")
         self.scale = 1
         self.set_size()
-        self.type = type
+        self.type = box_type
         self.center_x = x
         self.center_y = y
 

@@ -87,6 +87,7 @@ class PlayerCharacter(MovingSprite):
         """The player's update class. Is run every game tick."""
         super().update()
 
+
     def bounce(self):
         super().bounce()
         num = random.randint(1,2)
@@ -94,3 +95,6 @@ class PlayerCharacter(MovingSprite):
             constants.boing_sound.play(volume=1, pan=1, loop = False)
         elif num == 2:
             constants.bonk_sound.play(volume=1, pan=1, loop = False)
+            
+    def set_move(self, direction):
+        super().set_move(direction)

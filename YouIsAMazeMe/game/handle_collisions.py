@@ -31,7 +31,7 @@ class HandleCollisions():
         self.commands = Commands(sprites)
         self.button = sprites["button"]
         self.slimes = sprites["slimes"]
-
+  
         self._handle_walls_collision()
         self._handle_box_collision()
         self._handle_box_environment_collision()
@@ -102,8 +102,23 @@ class HandleCollisions():
             # enemy.can_damage
             # enemy.can_be_pushed
 
+            if enemy.can_damage:
+              # This is where the player dies
+                if player.collides_with_sprite(enemy):
+                    constants.died_sound.play(volume=1, pan=1, loop = False)
+                    self.player.hide()
             # For when the player runs into the enemy
+
             if not player.fixing and player.collides_with_sprite(enemy):
+    
+                num = random.randint(1,3)
+                if num == 1:
+                    constants.owie_sound.play(volume=1, pan=1, loop = False)
+                elif num == 2:
+                    constants.ohno_sound.play(volume=1, pan=1, loop = False)
+                elif num == 3:
+                    constants.ouch_sound.play(volume=1, pan=1, loop = False)
+                    
                 if player.is_moving:
                     print("bouncing")
                     # Is the enemy standing still, and can it be pushed?
@@ -143,8 +158,8 @@ class HandleCollisions():
                     enemy.bounce()
                     
     def handle_door_collision(self, sprites):
-        player = sprites['player'][0]
         door = sprites['door'][0]
+        player = self.player
         if player.collides_with_sprite(door):
             num = random.randint(1,3)
             if num == 1:
