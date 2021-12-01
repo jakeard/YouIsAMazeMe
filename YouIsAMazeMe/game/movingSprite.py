@@ -43,6 +43,8 @@ class MovingSprite(arcade.Sprite):
             self.change_x = 0
             self.change_y = 0
             self.is_moving = False
+            if self.fixing:
+                self.fixing = False
             
 
     def update(self):
@@ -59,9 +61,6 @@ class MovingSprite(arcade.Sprite):
               self.move()
           else: # enter this block if I'm not moving!
               self._round_pos()
-              # if I'm still trying to "fix", then stop it
-              if self.fixing:
-                  self.fixing = False
         
     def bounce(self, direction=None):
         """Causes the sprite to reverse direction. Reverses current direction by default."""
