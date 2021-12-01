@@ -50,7 +50,11 @@ class LevelLoader():
             # add wall at specified coordinates
             wall = Walls(x,y)
             self.sprites["wall_list"].append(wall)
-            pass
+        
+        elif sprite == "c":
+            # add a 'crate' or 'box'
+            box = Box(x,y)
+            self.sprites["boxes"].append(box)
         elif sprite == "p":
             # player
             player = PlayerCharacter(x,y)
