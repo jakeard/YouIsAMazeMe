@@ -44,11 +44,7 @@ class HandleCollisions():
             hit_list = arcade.check_for_collision_with_lists(slime, [self.sprites['player'], self.enemies, self.boxes])
             for collision in hit_list:
                 if not collision.fixing:
-                    num = random.randint(1,2)
-                    if num == 1:
-                        constants.boing_sound.play(volume=1, pan=1, loop = False)
-                    elif num == 2:
-                        constants.bonk_sound.play(volume=1, pan=1, loop = False)
+                    constants.ew_sound.play(volume=1, pan=1, loop = False)
                     collision.bounce()
     
     def _handle_walls_collision(self):

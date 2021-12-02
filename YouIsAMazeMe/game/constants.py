@@ -45,6 +45,7 @@ AHH = os.path.join(PATH, '..', 'assets', 'sounds', 'ahh.mp3')
 GRUNT = os.path.join(PATH, '..', 'assets', 'sounds', 'grunt.mp3')
 BUTTON = os.path.join(PATH, '..', 'assets', 'sounds', 'button.mp3')
 DIED = os.path.join(PATH, '..', 'assets', 'sounds', 'idied.mp3')
+EW = os.path.join(PATH, '..', 'assets', 'sounds', 'eww.mp3')
 
 autumn_sound = arcade.Sound(AUTUMN)
 pixel_sound = arcade.Sound(PIXEL)
@@ -60,6 +61,7 @@ boing_sound = arcade.Sound(BOING)
 grunt_sound = arcade.Sound(GRUNT)
 button_sound = arcade.Sound(BUTTON)
 died_sound = arcade.Sound(DIED)
+ew_sound = arcade.Sound(EW)
 
 # Asset Pathing
 NEW_PLAYER_SPRITE = os.path.join(PATH, '..', 'assets', 'images', 'character_000') # Trim off the last digit and .png 
