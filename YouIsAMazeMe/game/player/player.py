@@ -90,11 +90,6 @@ class PlayerCharacter(MovingSprite):
 
     def bounce(self):
         super().bounce()
-        num = random.randint(1,2)
-        if num == 1:
-            constants.boing_sound.play(volume=1, pan=1, loop = False)
-        elif num == 2:
-            constants.bonk_sound.play(volume=1, pan=1, loop = False)
             
     def set_move(self, direction):
         super().set_move(direction)

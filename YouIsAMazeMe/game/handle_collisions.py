@@ -44,6 +44,7 @@ class HandleCollisions():
             hit_list = arcade.check_for_collision_with_lists(slime, [self.sprites['player'], self.enemies, self.boxes])
             for collision in hit_list:
                 if not collision.fixing:
+                    constants.ew_sound.play(volume=1, pan=1, loop = False)
                     collision.bounce()
     
     def _handle_walls_collision(self):
@@ -51,6 +52,11 @@ class HandleCollisions():
         if not player.fixing:
             for wall in self.walls:
                     if player.collides_with_sprite(wall):
+                        num = random.randint(1,2)
+                        if num == 1:
+                            constants.boing_sound.play(volume=1, pan=1, loop = False)
+                        elif num == 2:
+                            constants.bonk_sound.play(volume=1, pan=1, loop = False)
                         player.bounce()
 
     def _handle_box_collision(self):
@@ -153,6 +159,11 @@ class HandleCollisions():
                                     # Otherwise, just change the direction only.
                                     collision.bounce()
                             else:
+                                # num = random.randint(1,2)
+                                # if num == 1:
+                                #     constants.boing_sound.play(volume=1, pan=1, loop = False)
+                                # elif num == 2:
+                                #     constants.bonk_sound.play(volume=1, pan=1, loop = False)
                                 # If the enemy didn't move into it, make it reverse direction instead.
                                 collision.bounce()
                     enemy.bounce()
@@ -167,5 +178,5 @@ class HandleCollisions():
             elif num == 2:
                 constants.yay_sound.play(volume=1, pan=1, loop = False)
             elif num == 3:
-                constants.hooray_soundw.play(volume=1, pan=1, loop = False)
+                constants.hooray_sound.play(volume=1, pan=1, loop = False)
             return True
