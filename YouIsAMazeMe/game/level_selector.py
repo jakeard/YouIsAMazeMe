@@ -13,6 +13,7 @@ class LevelSelector(arcade.View):
     def on_draw(self):
         arcade.start_render()
         arcade.set_background_color((131, 177, 91))
+        arcade.draw_lrtb_rectangle_filled(int(25 * constants.WIDTH_RATIO), int(95 * constants.WIDTH_RATIO), int(55 * constants.HEIGHT_RATIO), int(18 * constants.HEIGHT_RATIO), (179, 116, 93))
         arcade.draw_text('Levels', int(constants.SCREEN_WIDTH / 2 + 1 * constants.WIDTH_RATIO), int(550 * constants.HEIGHT_RATIO), arcade.color.WHITE, font_size=35, anchor_x='center')
         arcade.draw_text('Back', int(60 * constants.WIDTH_RATIO), int(25 * constants.HEIGHT_RATIO), arcade.color.WHITE, font_size=25, anchor_x='center')
         level = 0
@@ -22,13 +23,16 @@ class LevelSelector(arcade.View):
                 level += 1
                 if level % 4 == 0:
                     y -= 150 * constants.HEIGHT_RATIO
+                self.press_ranges.append((int(i - 25 * constants.WIDTH_RATIO), int(i + 25 * constants.WIDTH_RATIO), int(y + 35 * constants.HEIGHT_RATIO), int(y - 1 * constants.HEIGHT_RATIO), level + 1))
+                current = self.press_ranges[len(self.press_ranges) - 1]
+                arcade.draw_lrtb_rectangle_filled(current[0], current[1], current[2] - 3, current[3] - 3, (93, 173, 179))
                 if level < 10:
                     arcade.draw_text(f'0{level}', i, int(y), arcade.color.WHITE, font_size=35, anchor_x='center')
                 else:
                     arcade.draw_text(f'{level}', i, int(y), arcade.color.WHITE, font_size=35, anchor_x='center')
-                self.press_ranges.append((int(i - 25 * constants.WIDTH_RATIO), int(i + 25 * constants.WIDTH_RATIO), int(y + 35 * constants.HEIGHT_RATIO), int(y - 1 * constants.HEIGHT_RATIO), level + 1))
                 if level == self.num_files:
                     break
+                    
         # arcade.draw_lrtb_rectangle_outline(int(20 * constants.WIDTH_RATIO), int(100 * constants.WIDTH_RATIO), int(55 * constants.HEIGHT_RATIO), int(20 * constants.HEIGHT_RATIO), arcade.color.BLACK)
     
     def on_mouse_press(self, _x, _y, _button, _modifiers):
