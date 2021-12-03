@@ -10,6 +10,7 @@ class Instructions(arcade.View):
     def on_draw(self):
         arcade.start_render()
         self.texture.draw_sized(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2, constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)
+        arcade.draw_lrtb_rectangle_filled(int(25 * constants.WIDTH_RATIO), int(95 * constants.WIDTH_RATIO), int(55 * constants.HEIGHT_RATIO), int(18 * constants.HEIGHT_RATIO), (179, 116, 93))
         arcade.draw_text("How to Play", int(constants.SCREEN_WIDTH / 2 + 1 * constants.WIDTH_RATIO), int(550 * constants.HEIGHT_RATIO), arcade.color.WHITE, font_size=35, anchor_x='center')
         arcade.draw_text('Your job is to escape each level. Use WASD to move. You are the     character, and must push blocks like     to form code that will allow you to escape the room. Put the code after the      block. Look out for bugs in your code! The     bug can get in your way and slow you down, the       bug can mess up your code, and the        bug will kill you and your program. Good luck!', 600, int(450 * constants.HEIGHT_RATIO), arcade.color.WHITE, font_size=30, anchor_x='center', multiline=True, width=1000)
         arcade.draw_text('Back', int(60 * constants.WIDTH_RATIO), int(25 * constants.HEIGHT_RATIO), arcade.color.WHITE, font_size=25, anchor_x='center')
