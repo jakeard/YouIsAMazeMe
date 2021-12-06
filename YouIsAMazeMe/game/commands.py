@@ -10,6 +10,7 @@ class Commands():
         self.door = sprites['door'][0]
         self.enemies = sprites['enemies']
         self.slimes = sprites['slimes']
+        self.button = sprites["button"]
 
     def execute(self, sprites):
         print("Executing commands!")
@@ -45,6 +46,13 @@ class Commands():
                     door = self.door
                     door.center_x = 704
                     door.center_y = 704
+                if cmds == ['print(', 'slimes', ")"]:
+                    print("Print a slimes.")
+                    button = self.button[0]
+                    x = button.center_x
+                    y = button.center_y
+                    self.sprites['slimes'][0].center_x = x
+                    self.sprites['slimes'][0].center_y = y
                 if cmds == ['del(', 'slimes', ")"]:
                     print("Delete the slimes.")
                     slimes = self.slimes
@@ -63,7 +71,8 @@ class Commands():
                         enemy.center_y = constants.TILE_SIZE + constants.SCREEN_HEIGHT
                 if cmds == ['print(', 'bugs', ")"]:
                     print("Print a bugs.")
-                    x = constants.TILE_SIZE
-                    y = constants.TILE_SIZE
+                    button = self.button[0]
+                    x = button.center_x
+                    y = button.center_y
                     self.sprites['enemies'][0].center_x = x
                     self.sprites['enemies'][0].center_y = y
