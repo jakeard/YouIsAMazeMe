@@ -6,11 +6,9 @@
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
 **Tools:** Visual Studio Code, MS Paint, Google Sheets, Excel, [Wideo Free Text-to-Speech](https://wideo.co/text-to-speech/)
 
-{Describe the programming language that you used and any libraries.}
-**Programming Language**: Python, Arcade Library, Random Library
+**Programming Language(s) and Libraries**: Python, Arcade Library, Random Library, JSON library
 
 # Collaborators
 
