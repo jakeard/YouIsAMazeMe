@@ -6,9 +6,18 @@
 
 # Development Environment
 
-**Tools:** Visual Studio Code, MS Paint, Google Sheets, Excel, [Wideo Free Text-to-Speech](https://wideo.co/text-to-speech/)
+**Tools:** 
+* Visual Studio Code
+* MS Paint
+* Google Sheets
+* Excel
+* [Wideo Free Text-to-Speech](https://wideo.co/text-to-speech/)
 
-**Programming Language(s) and Libraries**: Python, Arcade Library, Random Library, JSON library
+**Programming Language(s) and Libraries**: 
+* Python
+* Arcade Library
+* Random Library
+* JSON library
 
 # Collaborators
 
