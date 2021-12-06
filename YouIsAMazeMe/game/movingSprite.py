@@ -51,16 +51,19 @@ class MovingSprite(arcade.Sprite):
         """The player's update class. Is run every game tick."""
 
         if not self.is_disabled:
-          super().update()
+            super().update()
 
-          # Make sure that the current position is up to date
-          self.current_pos = (self.center_x, self.center_y)
+            # Make sure that the current position is up to date
+            self.current_pos = (self.center_x, self.center_y)
 
-          # Only run the move function if set_move has activated movement
-          if self.is_moving:
-              self.move()
-          else: # enter this block if I'm not moving!
-              self._round_pos()
+            # Only run the move function if set_move has activated movement
+            if self.is_moving:
+                self.move()
+            else: # enter this block if I'm not moving!
+                if not self.is_moving and self.fixing:
+                    self.fixing = False
+                    #self._round_pos() # disabled, slows down program speed and still doesn't fix every error.
+
         
     def bounce(self, direction=None):
         """Causes the sprite to reverse direction. Reverses current direction by default."""
@@ -92,13 +95,16 @@ class MovingSprite(arcade.Sprite):
             self.disabled_pos = None
 
     def _round_pos(self):
-        """Helper function, sets the player's location to the closest tile center. Called when the player is not moving."""
+        """Helper function, sets the sprite's location to the closest tile center."""
+        print("ROUNDING")
         if not self.center_x%64==0:
             x_offset = round(self.center_x/64)
             self.center_x = x_offset*64
+            print("CORRECTING X")
         if not self.center_y%64==0:
             y_offset = round(self.center_y/64)
             self.center_y = y_offset*64
+            print("CORRECTING Y")
 
     def collides_with_sprite(self, other) -> bool:
         if not self.is_disabled:

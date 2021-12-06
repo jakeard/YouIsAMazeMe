@@ -143,11 +143,11 @@ class HandleCollisions():
                     for collision in hitlist:
                         if isinstance(collision, Box) and not collision.fixing: # is the object a box, and is it stationary?
                             # did the player push the box, or did the enemy run into the box?
-                            collision.target_pos = collision.initial_pos
                             # If the enemy is moving, and they can legally push the block:
                             if enemy.is_moving and enemy.can_push:
                                 # If the box wasn't moving beforehand...
                                 if not collision.is_moving:
+                                    collision._round_pos() # rounds the position before setting the move, "snapping" it to the grid.
                                     collision.set_move(enemy.direction)
                                 else:
                                     # Otherwise, just change the direction only.
