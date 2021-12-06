@@ -96,15 +96,15 @@ class MovingSprite(arcade.Sprite):
 
     def _round_pos(self):
         """Helper function, sets the sprite's location to the closest tile center."""
-        print("ROUNDING")
+        #print("ROUNDING")
         if not self.center_x%64==0:
             x_offset = round(self.center_x/64)
             self.center_x = x_offset*64
-            print("CORRECTING X")
+            #print("CORRECTING X")
         if not self.center_y%64==0:
             y_offset = round(self.center_y/64)
             self.center_y = y_offset*64
-            print("CORRECTING Y")
+            #print("CORRECTING Y")
 
     def collides_with_sprite(self, other) -> bool:
         if not self.is_disabled:
