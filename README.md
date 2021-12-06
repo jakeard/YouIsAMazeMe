@@ -12,12 +12,16 @@
 
 # Collaborators
 
-{Provide a list of everyone on your team}
+Jake Ard
+Kim Black
+Aaron Nash
+Nicolas Almeida
+Ken McKay Simper
 
 # Useful Websites
 
 {Make a list of websites that you found helpful in this project}
-* [Web Site Name](http://url.link.goes.here)
+* [Python Arcade Library](https://api.arcade.academy/en/latest/)
 * [Web Site Name](http://url.link.goes.here)
 
 # Future Work
