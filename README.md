@@ -37,6 +37,6 @@
 # Future Work
 
 {Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+* Hidden invisble maze level. (The maze is off screen and you use the power of sound to navigate it)
+* High scores and coins. Save people's personal high scores to their JSON file.
+* More levels
