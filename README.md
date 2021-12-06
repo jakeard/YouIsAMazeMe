@@ -12,11 +12,11 @@
 
 # Collaborators
 
-Jake Ard
-Kim Black
-Aaron Nash
-Nicolas Almeida
-Ken McKay Simper
+* Jake Ard
+* Kim Black
+* Aaron Nash
+* Nicolas Almeida
+* Ken McKay Simper
 
 # Useful Websites
 
