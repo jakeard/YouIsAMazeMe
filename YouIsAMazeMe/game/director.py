@@ -20,6 +20,7 @@ from game.boxes import Box
 from game.win import Win
 from game.lose import Lose
 from game.level_loader import LevelLoader
+import game.start_view as start_view
 import json
 
 
@@ -90,7 +91,7 @@ class MainWindow(arcade.View):
 
         # Put the text on the screen.
         # output = f"Score: {self.score}"
-        arcade.draw_text("R - Restart", constants.TILE_SIZE/2, constants.SCREEN_HEIGHT - constants.TILE_SIZE/3, arcade.color.WHITE, 16)
+        arcade.draw_text("R - Restart   Q - Menu", constants.TILE_SIZE/2, constants.SCREEN_HEIGHT - constants.TILE_SIZE/3, arcade.color.WHITE, 16)
 
     def on_key_press(self, key, modifiers):
         """
@@ -109,6 +110,10 @@ class MainWindow(arcade.View):
                 direction = (1,0)
             elif key == arcade.key.LEFT or key == arcade.key.A:
                 direction = (-1,0)
+            elif key == arcade.key.Q:
+                # return to menu
+                self.window.show_view(start_view.Start_View())
+                pass
 
             player.set_past_direction(direction)
             self.handle_collisions.fixing = False
