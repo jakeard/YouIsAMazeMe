@@ -12,11 +12,11 @@
 
 # Collaborators
 
-* Jake Ard
-* Kim Black
-* Aaron Nash
-* Nicolas Almeida
-* Ken McKay Simper
+* [Jake Ard](https://github.com/jakeard)
+* [Kim Black](https://github.com/Kim-Quirk)
+* [Aaron Nash](https://github.com/aaronhnash)
+* [Nicolas Almeida](https://github.com/Rathianno)
+* [Ken McKay Simper](https://github.com/ksimper97)
 
 # Useful Websites
 
