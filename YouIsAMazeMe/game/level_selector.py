@@ -5,6 +5,9 @@ import game.director
 from game import constants
 
 class LevelSelector(arcade.View):
+    """
+    An arcade.View class, shows the screen that allows you to select a level when loaded.
+    """
     def __init__(self):
         super().__init__()
         self.press_ranges = []

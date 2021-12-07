@@ -9,19 +9,16 @@ import random
 from game.player.player import PlayerCharacter
 
 class HandleCollisions():
-    """A code template for handling collisions. The responsibility of this class of objects is to update the game state when actors collide.
-    
-    Stereotype:
-        Controller
+    """
+    A class for handling collisions. The responsibility of 
+    this class of objects is to update the game state when sprites collide.
     """
     def __init__(self):
         self.pressed = False
     
     def execute(self, sprites):
-        """Executes the action using the given actors.
-
-        Args:
-            sprites (dict): The game actors {key: tag, value: list}.
+        """
+        Executes the action using the given sprites.
         """
         self.sprites = sprites
         self.player = sprites['player'][0]

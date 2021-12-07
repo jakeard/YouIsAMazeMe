@@ -3,6 +3,9 @@ from game import constants
 import game.director
 
 class Lose(arcade.View):
+    """
+    An arcade.View class, shows the lose screen when loaded.
+    """
     def __init__(self):
         super().__init__()
     

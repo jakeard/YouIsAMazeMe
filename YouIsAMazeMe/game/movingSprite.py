@@ -4,7 +4,10 @@ import arcade
 import game.constants as constants
 
 class MovingSprite(arcade.Sprite):
-
+    """
+    A super class that keeps track of all moving sprites 
+    locations, directions, face, movement, state, etc.
+    """
     def __init__(self, x, y):
         super().__init__()
 

@@ -5,6 +5,9 @@ import game.director
 import game.level_selector
 
 class Win(arcade.View):
+    """
+    An arcade.View class, shows the win screen when the player finishes a level.
+    """
     def __init__(self):
         super().__init__()
     
