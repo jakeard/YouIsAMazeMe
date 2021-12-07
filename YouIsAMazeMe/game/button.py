@@ -3,6 +3,9 @@ from game.immovableSprite import ImmovableSprite
 from game import constants
 
 class Buttons(arcade.Sprite):
+    """
+    The class that places the button and keeps track of if it is pressed.
+    """
     def __init__(self, x, y):
         super().__init__()
         self.textures = [arcade.load_texture(constants.BUTTON_SPRITE), 
