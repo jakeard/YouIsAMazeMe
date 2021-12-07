@@ -91,8 +91,9 @@ class MainWindow(arcade.View):
 
         # Put the text on the screen.
         # output = f"Score: {self.score}"
-        arcade.draw_text("R - Restart   Q - Menu", constants.TILE_SIZE/2, constants.SCREEN_HEIGHT - constants.TILE_SIZE/3, arcade.color.WHITE, 16)
-
+        arcade.draw_text("R - Restart    Q - Menu", constants.TILE_SIZE/2, constants.SCREEN_HEIGHT - constants.TILE_SIZE/3, arcade.color.WHITE, 16)
+        # arcade.draw_text(" ", 0, constants.SCREEN_HEIGHT/2, arcade.color.WHITE, 42, width=constants.SCREEN_WIDTH, align="center")
+        # arcade.draw_text(" ", 0, constants.SCREEN_HEIGHT/2 - constants.TILE_SIZE - 10, arcade.color.WHITE, 42, width=constants.SCREEN_WIDTH, align="center")
     def on_key_press(self, key, modifiers):
         """
         Called whenever a key is pressed.
