@@ -21,7 +21,6 @@ class Lose(arcade.View):
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         if _x in range(int(320 * constants.WIDTH_RATIO), int(483 * constants.WIDTH_RATIO)) and _y in range(int(83 * constants.HEIGHT_RATIO), int(148 * constants.HEIGHT_RATIO)):
-            print('r')
             view = game.director.MainWindow()
             view.setup()
             self.window.show_view(view)

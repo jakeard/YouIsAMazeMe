@@ -35,8 +35,6 @@ class LevelSelector(arcade.View):
                     arcade.draw_text(f'{level}', i, int(y), arcade.color.WHITE, font_size=35, anchor_x='center')
                 if level == self.num_files:
                     break
-                    
-        # arcade.draw_lrtb_rectangle_outline(int(20 * constants.WIDTH_RATIO), int(100 * constants.WIDTH_RATIO), int(55 * constants.HEIGHT_RATIO), int(20 * constants.HEIGHT_RATIO), arcade.color.BLACK)
     
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         if _x in range(int(20 * constants.WIDTH_RATIO), int(100 * constants.WIDTH_RATIO)) and _y in range(int(20 * constants.HEIGHT_RATIO), int(55 * constants.HEIGHT_RATIO)):

@@ -10,8 +10,6 @@ or
 
 Read the instructions, hit play, and enjoy the game!
 
-{Provide a description of your team project.  Describe how to use the software.}
-
 # Development Environment
 
 **Tools:**
