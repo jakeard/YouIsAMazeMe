@@ -13,7 +13,11 @@ def load_texture_pair(filename):
     ]
 
 class EnemyBasic(MovingSprite):
-
+    """
+    The class that keeps track of snail enemy positions, 
+    directions, textures, updates, and movements. This class 
+    is the base class for all enemies.
+    """
     def __init__(self, x, y):
         super().__init__(x, y)
         # How does this interract with the character?
@@ -111,7 +115,11 @@ class EnemyBasic(MovingSprite):
     
 
 class EnemyMover(EnemyBasic):
-
+    """
+    The class that keeps track of fly enemy positions, 
+    directions, textures, updates, and movements. Inherits 
+    from EnemyBasic with updated ability to push boxes.
+    """
     def __init__(self,x,y):
         super().__init__(x,y)
 
@@ -125,6 +133,12 @@ class EnemyMover(EnemyBasic):
     
 
 class EnemyAttacker(EnemyBasic):
+    """
+    The class that keeps track of spider enemy positions, 
+    directions, textures, updates, and movements. Inherits 
+    from EnemyBasic with updated ability to push boxes and 
+    kill the player.
+    """
     def __init__(self,x,y):
         super().__init__(x,y)
 
