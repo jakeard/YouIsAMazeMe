@@ -1,4 +1,4 @@
-# YouIsAMazeMe
+# You Is AMaze Me
 
 Welcome to YouIsAMazeMe! This game is somewhat based off of the game Baba Is You, combined with some Python commands. This game was run and is written using Python and the Python Arcade Library. In order to play, you must have Python 3, and Python Arcade Library installed. From there, you can start the game from the command line or terminal using the command:
 
