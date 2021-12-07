@@ -79,10 +79,6 @@ class HandleCollisions():
                 hitlist = arcade.check_for_collision_with_lists(box, [self.walls, self.boxes, self.slimes])
                 if len(hitlist) != 0:
                     box.bounce()
-                    for hit in hitlist:
-                        #print("hit")
-                        # What will this box do to whatever it collides with?
-                        pass
     
     def _handle_button_press(self):
         player = self.player
