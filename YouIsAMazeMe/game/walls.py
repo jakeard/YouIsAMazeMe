@@ -3,6 +3,10 @@ from game.immovableSprite import ImmovableSprite
 from game import constants
 
 class Walls(ImmovableSprite):
+    """
+    The class that sets the size and calls the ImmovableSprite 
+    superclass to set the location of each wall.
+    """
     def __init__(self, x, y):
         super().__init__(x, y, constants.WALL_SPRITE)
         self.set_size()
@@ -15,7 +19,10 @@ class Walls(ImmovableSprite):
         self.points = [[-point, -point], [point, -point], [point, point], [-point, point]]
 
 class ThinWalls(ImmovableSprite):
-
+    """
+    The class that sets the size and calls the ImmovableSprite 
+    superclass to set the location of each thin wall.
+    """
     def __init__(self, x, y, orientation):
         super().__init__(x,y, constants.WALL_SPRITE)
 

@@ -8,7 +8,10 @@ import game.enemy.enemies as enemies
 import arcade
 
 class LevelLoader():
-
+    """
+    Loads a level with all sprites based on a CSV file that is 
+    determined from the current level that is passed in.
+    """
     def __init__(self, choose_level, sprite_dict=None, curr_level=1):
         if choose_level is None:
             self.current_level = curr_level

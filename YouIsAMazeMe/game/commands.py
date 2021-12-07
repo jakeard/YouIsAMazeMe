@@ -1,9 +1,13 @@
 import arcade
 from game import constants
 import game.enemy.enemies as enemies
-# from game.director import on_update
 
 class Commands():
+    """
+    The Commands class is called when the player presses the button, 
+    and checks for the order of the boxes after the starting block in 
+    order to know what to do.
+    """
     def __init__(self, sprites):
         self.file = 'YouIsAMazeMe/game/run.py'
         self.sprites = sprites

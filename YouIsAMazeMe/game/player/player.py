@@ -13,6 +13,10 @@ def load_texture_pair(filename):
     ]
 
 class PlayerCharacter(MovingSprite):
+    """
+    The class that keeps track of the player's position, 
+    direction, texture, updates, and movement.
+    """
     def __init__(self, x, y):
         
         # Set up parent class

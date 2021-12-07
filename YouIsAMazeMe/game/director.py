@@ -25,7 +25,7 @@ import json
 
 
 class MainWindow(arcade.View):
-    """ Main application class. """
+    """ Main application class. This is where the game loop runs. """
 
     def __init__(self, level=None):
         """ Set up the game and initialize the variables. """

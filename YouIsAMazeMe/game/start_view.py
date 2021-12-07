@@ -5,6 +5,10 @@ from game import constants
 from game.instructions import Instructions
 
 class Start_View(arcade.View):
+    """
+    An arcade.View class, shows the starting screen when loaded. 
+    This is the first thing that is shown when the game starts.
+    """
     def __init__(self):
         super().__init__()
     

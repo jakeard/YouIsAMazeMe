@@ -1,18 +1,19 @@
 import os
 import arcade
 
-SCREEN_WIDTH = 1216 # Was originally 800
-SCREEN_HEIGHT = 768 # Was originally 600
-SCREEN_TITLE = "Move with a Sprite Animation Example"
+"""
+Holds all constants used for the program.
+"""
+
+SCREEN_WIDTH = 1216 
+SCREEN_HEIGHT = 768 
+SCREEN_TITLE = "YouIsAMazeMe"
 
 WIDTH_RATIO = SCREEN_WIDTH / 800
 HEIGHT_RATIO = SCREEN_HEIGHT / 600
 
 
-# CHARACTER_SCALING = 2.2
 
-# COIN_SCALE = 0.5
-# COIN_COUNT = 50
 CHARACTER_SCALING = .9
 SPRITE_SCALING = 1
 
@@ -81,7 +82,7 @@ BACKGROUND_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Backgro
 START_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'start_screen.png')
 WIN_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'win.png')
 LOSE_SCREEN = os.path.join(PATH, '..', 'assets', 'images', 'you_lose.png') 
-CODE_BLOCKS = os.path.join(PATH, '..', 'assets', 'images') # Trim off the type and .png 
+CODE_BLOCKS = os.path.join(PATH, '..', 'assets', 'images')
 ENEMY_BASIC_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Enemy_sprites', 'snail')
 ENEMY_MOVER_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Enemy_sprites', 'fly')
 ENEMY_ATTACKER_SPRITE = os.path.join(PATH, '..', 'assets', 'kenney_assets', 'Enemy_sprites', 'spider')

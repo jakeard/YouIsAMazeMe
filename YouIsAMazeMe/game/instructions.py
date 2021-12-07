@@ -3,6 +3,9 @@ from game import constants
 import game.start_view
 
 class Instructions(arcade.View):
+    """
+    An arcade.View class, shows the screen that has the game instructions when loaded.
+    """
     def __init__(self):
         super().__init__()
         self.texture= arcade.load_texture(constants.INSTRUCT)
