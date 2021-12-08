@@ -7,7 +7,7 @@ Holds all constants used for the program.
 
 SCREEN_WIDTH = 1216 
 SCREEN_HEIGHT = 768 
-SCREEN_TITLE = "YouIsAMazeMe"
+SCREEN_TITLE = "You Is AMaze Me"
 
 WIDTH_RATIO = SCREEN_WIDTH / 800
 HEIGHT_RATIO = SCREEN_HEIGHT / 600
