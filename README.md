@@ -1,6 +1,6 @@
 # You Is AMaze Me
 
-Welcome to YouIsAMazeMe! This game is somewhat based off of the game Baba Is You, combined with some Python commands. You're an adorable Mango Man who must escape the code mazes! Run from the bugs who want to mess up your code and feel the frustration and enjoyment just like a real programmer. This game was run and is written using Python and the Python Arcade Library. In order to play, you must have Python 3, Python Arcade Library, Python Random Library, and the Python JSON library installed. From there, you can start the game from the command line or terminal using the command:
+Welcome to YouIsAMazeMe! This game is somewhat based off of the game Baba Is You, combined with some Python commands. You're an adorable Mango Man who must escape the code mazes! Run from the bugs who want to mess up your code and feel the frustration and enjoyment just like a real programmer. This game was written using Python and some additional Python libraries. In order to play, you must have Python 3 and some additional Python libraries (listed below) installed. From there, you can start the game from the command line or terminal using the command:
 
 `py YouIsAMazeMe` or `python3 YouIsAMazeMe`
 
