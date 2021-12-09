@@ -21,7 +21,7 @@ from game.win import Win
 from game.lose import Lose
 from game.level_loader import LevelLoader
 import game.start_view as start_view
-import json
+import game.save_data_handler as save_handler
 
 
 class MainWindow(arcade.View):
@@ -51,8 +51,8 @@ class MainWindow(arcade.View):
         self.player = None
         self.won = None
 
-        self._loader_path = "YouIsAMazeMe/levels/curr_data.json"
         self.loader = None
+        self.save_data = None
         self.curr_level_data = None
 
     def setup(self):
@@ -70,7 +70,11 @@ class MainWindow(arcade.View):
 
         
         # Initialization of the save data.
-        self.load_from_json()
+        self.save_data = save_handler.load_from_json()
+        self.loader = LevelLoader(choose_level=self.level, sprite_dict=self.sprites, curr_level=self.save_data['curr_lvl'])
+        self.loader.load_level()
+        #self.loader = LevelLoader(self.level, self.sprites, self.save_data['curr_lvl'])
+
         
 
         self.commands = Commands(self.sprites)
@@ -142,7 +146,7 @@ class MainWindow(arcade.View):
         if not self.won is None:
             if self.won:
                 self.level_advance()
-                self.save_to_json()
+                save_handler.save_to_json(self.save_data)
                 view = Win()
 
             elif not self.won:
@@ -161,36 +165,6 @@ class MainWindow(arcade.View):
     def change_win_status(self, status):
         self.won = status
 
-
-    def load_from_json(self):
-        """Searches in the specified loader path for a json save data file. 
-        If it's there, then it will load it into self.save_data as a dictionary.
-        Otherwise, it will create a brand new file."""
-        try: 
-            # Is there already a file? If so, proceed.
-            with open(self._loader_path, 'r') as rpath:
-                # Is there existing save data? If so, load it.
-                self.save_data = json.load(rpath)
-                self.loader = LevelLoader(self.level, self.sprites, self.save_data['curr_lvl'])
-
-        except:
-            # If not, create a new one and load as normal.
-            with open(self._loader_path, 'w') as wpath:
-                # initializes the json file
-                # If we want to add new things to be saved, we must initialize it in this dictionary here.
-                # ex: new_data = {'curr_lvl':1, 'char_sel':6, 'total_score':0}
-                new_data = {'curr_lvl':1}
-                json.dump(new_data, wpath)
-
-            with open(self._loader_path, 'r') as rpath:
-                self.save_data = json.load(rpath)
-            self.loader = LevelLoader(self.sprites)
-        
-        self.loader.load_level()
-
-    def save_to_json(self):
-        with open(self._loader_path, 'w') as wpath:
-            json.dump(self.save_data, wpath)
 
     def level_advance(self):
         # Take the current save data and write the next level to
